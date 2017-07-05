@@ -1,9 +1,40 @@
 ﻿@model BSAWeatherApp.Models.ForecastViewModel
 
-@{
-    ViewBag.Title = "Forecast";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+<div class="container">
+    <div class="row">
+        <h2>Weather for @Model.CityName (@Model.Country)</h2>
+    </div>
+    <div class="table">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td>Day:<br /><br /></td>
+                    <td>Morning temperature</td>
+                    <td>Day temperature</td>
+                    <td>Evening temperature</td>
+                    <td>Night temperature</td>
+                    <td>Minimum temperature</td>
+                    <td>Maximum temperature</td>
+                    <td>Weather</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var weather in Model.WeatherForecast)
+                {
+                    <tr>
+                        <td>@weather.Date.DayOfWeek</td>
+                        <td>@weather.Temperature.MorningTemp</td>
+                        <td>@weather.Temperature.DayTemp</td>
+                        <td>@weather.Temperature.EveningTemp</td>
+                        <td>@weather.Temperature.NightTemp</td>
+                        <td>@weather.Temperature.MinTemp</td>
+                        <td>@weather.Temperature.MaxTemp</td>
+                        <td>@weather.Weather.Main / @weather.Weather.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-@Model.CityName
 
