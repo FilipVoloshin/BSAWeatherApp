@@ -13,7 +13,7 @@ namespace BSAWeatherApp.Services
         public RootObject GetWeatherForecast(string defaultCity, string customCity, string period)
         {
             string cnt = ""; // period in days
-            string q = customCity == null ? defaultCity : customCity;
+            string q = customCity == null || customCity == "" ? defaultCity : customCity;
 
             switch (period)
             {

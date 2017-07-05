@@ -16,28 +16,17 @@ namespace BSAWeatherApp.Controllers
             return View();
         }
 
-        //POST: Weather/GetForecastBySettings
-        [HttpPost]
-        public ActionResult GetForecastBySettings(string city, string customCity, string period)
+        // GET: Weather/Forecast
+        public ActionResult Forecast(string city, string customCity, string period)
         {
-            var settings = new UserSettings
-            {
-                City = city,
-                CustomCity = customCity,
-                Period = period
-            };
-            return RedirectToAction("Forecast", settings);
-        }
-
-        public ActionResult Forecast(UserSettings settings)
-        {
-            if (settings.City == null && settings.CustomCity == null && settings.Period == null)
+            if (city == "" && customCity == "")
             {
                 //here add some values
                 return View("Filter");
             }
             var weatherForecast = new WeatherForecast();
-            var jsonWeatherResult = weatherForecast.GetWeatherForecast(settings.City, settings.CustomCity, settings.Period);
+            //var jsonWeatherResult = weatherForecast.GetWeatherForecast(settings.City, settings.CustomCity, settings.Period);
+            var jsonWeatherResult = weatherForecast.GetWeatherForecast(city, customCity, period);
             var dateTimeHelper = new DateTimeHelper();
             var viewModel = new ForecastViewModel();
             viewModel = new ForecastViewModel();
