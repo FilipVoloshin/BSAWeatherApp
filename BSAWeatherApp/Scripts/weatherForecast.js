@@ -1,7 +1,8 @@
 ﻿function changeSelectType() {
     var cityDropdownVal = $("#cities").val();
-    if (cityDropdownVal != "") {
+    if (cityDropdownVal !== "") {
         $("#customCity").attr('disabled', true);
+        $("#customCity").val("");
     }
     else {
         $("#customCity").attr('disabled', false);
