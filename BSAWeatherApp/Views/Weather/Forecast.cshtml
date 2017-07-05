@@ -1,36 +1,8 @@
-﻿@using BSAWeatherApp.Models
-
+﻿
 @{
     ViewBag.Title = "Forecast";
-    var cityBind = new SelectList(Enum.GetValues(typeof(Cities)));
-    var daysPeriodBind = new List<SelectListItem>
-    {
-        new SelectListItem{ Text = "For today", Value = "forToday", Selected = true},
-        new SelectListItem{ Text = "For three days", Value = "forThreeDays"},
-        new SelectListItem{ Text = "For a week", Value = "forAWeek"}
-    };
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/style.css" rel="stylesheet" />
-<div class="container">
-    <h2><i><text id="city"></text></i>Weather forecast</h2>
-    <div class="col-md-4">
-        <div class="form" id="citiesGroup">
-            @Html.Label("cities", "Select city:")
-            @Html.DropDownList("cities", cityBind, "--", new { @class = "form-control" })
-        </div>
-        <div class="form" id="customCityGroup">
-            @Html.Label("customCity", "Select custom city:")
-            @Html.TextBox("customCity", null, new { @class = "form-control" })
-        </div>
-        <div class="form" id="periodsCityGroup">
-            @Html.Label("periods", "Select period:")
-            @Html.DropDownList("periods", daysPeriodBind, new { @class = "form-control" })
-        </div>
-        <button id="weatherBtn" type="button" class="btn btn-default">Get forecast</button>
-    </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/weatherForecast.js"></script>
-</div>
 
+<h2>Forecast</h2>
 

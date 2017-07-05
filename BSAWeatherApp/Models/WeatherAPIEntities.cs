@@ -48,7 +48,7 @@ namespace BSAWeatherApp.Models
         public double rain { get; set; }
     }
 
-    public class WeatherForecast
+    public class RootObject
     {
         public City city { get; set; }
         public string cod { get; set; }

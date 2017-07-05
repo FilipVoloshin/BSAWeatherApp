@@ -187,6 +187,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Weather\Filter.cshtml" />
     <Content Include="Views\Weather\Forecast.cshtml" />
   </ItemGroup>
   <ItemGroup>

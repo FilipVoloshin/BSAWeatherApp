@@ -7,22 +7,31 @@ namespace BSAWeatherApp.Controllers
 {
     public class WeatherController : Controller
     {
-        private Services.WeatherForecast _weatherForecast;
+        private WeatherForecast _weatherForecast;
+
         public WeatherController()
         {
-            _weatherForecast = new Services.WeatherForecast();
+            _weatherForecast = new WeatherForecast();
         }
-        // GET: Weather/Forecast
-        public ActionResult Forecast()
+        // GET: Weather/Settings
+        public ActionResult Filter()
         {
             return View();
         }
 
         //POST: Weather/GetForecastBySettings
         [HttpPost]
-        public void GetForecastBySettings(string city, string customCity, string period)
+        public ActionResult GetForecastBySettings(string city, string customCity, string period)
         {
-            _weatherForecast.GetWeatherForecast(city,period);
+            var jsonWeatherResult = _weatherForecast.GetWeatherForecast(city,customCity,period);
+            return RedirectToAction("Forecast");
         }
+
+        // GET: Weather/Forecast
+        public ActionResult Forecast()
+        {
+            return View();
+        }
+
     }
 }

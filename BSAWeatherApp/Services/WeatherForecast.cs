@@ -9,9 +9,11 @@ namespace BSAWeatherApp.Services
     {
         public const string APIKEY = "d2a17a94d01097989a3e2d5e1cd799a8";
 
-        public WeatherForcast GetWeatherForecast(string city, string period)
+        public RootObject GetWeatherForecast(string defaultCity, string customCity, string period)
         {
-            string cnt = ""; //period in days
+            string cnt = ""; // period in days
+            string q = customCity == "" ? defaultCity : customCity;
+
             switch (period)
             {
                 case "forToday":
@@ -20,16 +22,17 @@ namespace BSAWeatherApp.Services
                 case "forThreeDays":
                     cnt = "3";
                     break;
-                case "forWeek":
+                case "forAWeek":
                     cnt = "7";
                     break;
                 default:
                     throw new KeyNotFoundException();
             }
-            string url = $"http://api.openweathermap.org/data/2.5/forecast/daily?q={city}&cnt={cnt}&APPID={APIKEY}&units=metric";
+
+            string url = $"http://api.openweathermap.org/data/2.5/forecast/daily?q={q}&cnt={cnt}&APPID={APIKEY}&units=metric";
             var client = new WebClient();
             var json = client.DownloadString(url);
-            return JsonConvert.DeserializeObject<WeatherForecast>(json);
+            return JsonConvert.DeserializeObject<RootObject>(json);
         }
     }
 }
