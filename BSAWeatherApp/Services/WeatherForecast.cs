@@ -1,5 +1,6 @@
 ﻿using BSAWeatherApp.Models;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Net;
 
@@ -12,7 +13,7 @@ namespace BSAWeatherApp.Services
         public RootObject GetWeatherForecast(string defaultCity, string customCity, string period)
         {
             string cnt = ""; // period in days
-            string q = customCity == "" ? defaultCity : customCity;
+            string q = customCity == null ? defaultCity : customCity;
 
             switch (period)
             {

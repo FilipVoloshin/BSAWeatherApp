@@ -9,7 +9,6 @@
         new SelectListItem{ Text = "For three days", Value = "forThreeDays"},
         new SelectListItem{ Text = "For a week", Value = "forAWeek"}
     };
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/Content/style.css" rel="stylesheet" />
 <div class="container">
@@ -28,6 +27,7 @@
             @Html.DropDownList("periods", daysPeriodBind, new { @class = "form-control" })
         </div>
         <button id="weatherBtn" type="button" class="btn btn-default">Get forecast</button>
+        <p></p>
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/weatherForecast.js"></script>
