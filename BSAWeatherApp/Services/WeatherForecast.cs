@@ -10,12 +10,12 @@ namespace BSAWeatherApp.Services
     {
         public const string APIKEY = "d2a17a94d01097989a3e2d5e1cd799a8";
 
-        public RootObject GetWeatherForecast(string defaultCity, string customCity, string period)
+        public RootObject GetWeatherForecast(string defaultCity, string customCity, string periods)
         {
             string cnt = ""; // period in days
             string q = customCity == null || customCity == "" ? defaultCity : customCity;
 
-            switch (period)
+            switch (periods)
             {
                 case "forToday":
                     cnt = "1";

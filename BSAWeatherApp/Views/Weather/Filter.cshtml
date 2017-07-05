@@ -12,23 +12,28 @@
 }
 <link href="~/Content/style.css" rel="stylesheet" />
 <div class="container">
-    <h2><i><text id="city"></text></i>Weather forecast</h2>
-    <div class="col-md-4">
-        <div class="form" id="citiesGroup">
-            @Html.Label("cities", "Select city:")
-            @Html.DropDownList("cities", cityBind, "--", new { @class = "form-control" })
+    @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get, ""))
+    {
+        <h2><i><text id="city"></text></i>Weather forecast</h2>
+        <div class="col-md-4">
+            <div class="form" id="citiesGroup">
+                @Html.Label("defaultCity", "Select city:")
+                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
+            </div>
+            <div class="form" id="customCityGroup">
+                @Html.Label("customCity", "Select custom city:")
+                @Html.TextBox("customCity", null, new { @class = "form-control" })
+            </div>
+            <div class="form" id="periodsCityGroup">
+                @Html.Label("period", "Select period:")
+                @Html.DropDownList("period", daysPeriodBind, new { @class = "form-control" })
+            </div>
+            @*<submit id="weatherBtn" type="submit" class="btn btn-default">Get forecast</submit>*@
+            <input type="submit" value="Get forecast" class="btn btn-default"/>
+            <p></p>
         </div>
-        <div class="form" id="customCityGroup">
-            @Html.Label("customCity", "Select custom city:")
-            @Html.TextBox("customCity", null, new { @class = "form-control" })
-        </div>
-        <div class="form" id="periodsCityGroup">
-            @Html.Label("periods", "Select period:")
-            @Html.DropDownList("periods", daysPeriodBind, new { @class = "form-control" })
-        </div>
-        <button id="weatherBtn" type="button" class="btn btn-default">Get forecast</button>
-        <p></p>
-    </div>
+    }
+    
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/weatherForecast.js"></script>
 </div>

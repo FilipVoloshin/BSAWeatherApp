@@ -1,5 +1,5 @@
 ﻿function changeSelectType() {
-    var cityDropdownVal = $("#cities").val();
+    var cityDropdownVal = $("#defaultCity").val();
     if (cityDropdownVal !== "") {
         $("#customCity").attr('disabled', true);
         $("#customCity").val("");
@@ -9,21 +9,6 @@
     }
 }
 
-$("#cities").change(function () {
+$("#defaultCity").change(function () {
     changeSelectType();
-});
-
-$("#weatherBtn").click(function () {
-    var selectedCityVal = $("#cities").val();
-    var customCityVal = $("#customCity").val();
-    var periods = $("#periods").val();
-    $.ajax({
-        url: "Weather/Forecast",
-        type: "GET",
-        data: {
-            city: selectedCityVal,
-            customCity: customCityVal,
-            period: periods
-        }
-    })
 });
