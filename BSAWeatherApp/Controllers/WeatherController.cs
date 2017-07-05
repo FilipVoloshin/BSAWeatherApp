@@ -14,7 +14,7 @@ namespace BSAWeatherApp.Controllers
 
         //POST: Weather/GetForecastBySettings
         [HttpPost]
-        public void GetForecastBySettings(int cityId, string customCity, string period)
+        public void GetForecastBySettings(string city, string customCity, string period)
         {
 
         }

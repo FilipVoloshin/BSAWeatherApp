@@ -17,6 +17,12 @@ $("#weatherBtn").click(function () {
     var customCityVal = $("#customCity").val();
     var periods = $("#periods").val();
     $.ajax({
-
+        url: "Weather/GetForecastBySettings",
+        type: "POST",
+        data: {
+            city: selectedCityVal,
+            customCity: customCityVal,
+            period: periods
+        }
     })
 });
