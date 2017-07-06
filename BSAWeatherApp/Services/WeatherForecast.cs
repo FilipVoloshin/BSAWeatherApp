@@ -31,9 +31,17 @@ namespace BSAWeatherApp.Services
             }
 
             string url = $"http://api.openweathermap.org/data/2.5/forecast/daily?q={q}&cnt={cnt}&APPID={APIKEY}&units=metric";
-            var client = new WebClient();
-            var json = client.DownloadString(url);
-            return JsonConvert.DeserializeObject<RootObject>(json);
+            try
+            {
+                var client = new WebClient();
+                var json = client.DownloadString(url);
+                var jsonObject = JsonConvert.DeserializeObject<RootObject>(json);
+                return jsonObject;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
     }
 }

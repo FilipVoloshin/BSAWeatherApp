@@ -21,14 +21,23 @@ namespace BSAWeatherApp.Controllers
         public ActionResult Forecast(string defaultCity, string customCity, string period)
         {
             ViewBag.Error = false;
+            ViewBag.ErrorMessage = "";
+
             if (defaultCity == null && customCity == null && period == null)
             {
                 ViewBag.Error = true;
+                ViewBag.ErrorMessage = "Please fill all fields!";
                 return View("Filter");
             }
 
             var weatherForecast = new WeatherForecast();
             var jsonWeatherResult = weatherForecast.GetWeatherForecast(defaultCity, customCity, period);
+            if (jsonWeatherResult == null)
+            {
+                ViewBag.Error = true;
+                ViewBag.ErrorMessage = customCity == "" ? "Please enter cities name!" : "There are no cities with such name!";
+                return View("Filter");
+            }
             var dateTimeHelper = new DateTimeHelper();
             var viewModel = new ForecastViewModel();
             viewModel = new ForecastViewModel();
