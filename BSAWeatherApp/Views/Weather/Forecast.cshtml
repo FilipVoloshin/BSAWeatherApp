@@ -4,17 +4,17 @@
     <div class="row">
         <h2>Weather for @Model.CityName (@Model.Country)</h2>
     </div>
-    <div class="table">
-        <table class="table table-hover">
+    <div class="table row">
+        <table class="table table-hover table-bordered">
             <thead>
                 <tr>
                     <td>Day:<br /><br /></td>
-                    <td>Morning temperature</td>
-                    <td>Day temperature</td>
-                    <td>Evening temperature</td>
-                    <td>Night temperature</td>
-                    <td>Minimum temperature</td>
-                    <td>Maximum temperature</td>
+                    <td>Morning temperature ℃</td>
+                    <td>Day temperature ℃</td>
+                    <td>Evening temperature ℃</td>
+                    <td>Night temperature ℃</td>
+                    <td>Minimum temperature ℃</td>
+                    <td>Maximum temperature ℃</td>
                     <td>Weather</td>
                 </tr>
             </thead>
@@ -22,7 +22,7 @@
                 @foreach(var weather in Model.WeatherForecast)
                 {
                     <tr>
-                        <td>@weather.Date.DayOfWeek</td>
+                        <td>@weather.Date.DayOfWeek (@weather.Date.ToShortDateString())</td>
                         <td>@weather.Temperature.MorningTemp</td>
                         <td>@weather.Temperature.DayTemp</td>
                         <td>@weather.Temperature.EveningTemp</td>
