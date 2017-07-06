@@ -1,0 +1,16 @@
+﻿#customCityGroup, #periodsCityGroup {
+    margin-top: 10px;
+}
+
+#weatherSbmt, #alertBoxForError {
+    margin-top: 20px;
+}
+
+#forecastHeader {
+    text-align: center;
+}
+
+#forecastTable{
+    margin-top: 50px;
+}
+
