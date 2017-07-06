@@ -59,7 +59,8 @@ namespace BSAWeatherApp.Controllers
                 var weather = new Weathers
                 {
                     Main = item.weather.Select(w => w.main).FirstOrDefault(),
-                    Description = item.weather.Select(w => w.description).FirstOrDefault()
+                    Description = item.weather.Select(w => w.description).FirstOrDefault(),
+                    Icon = item.weather.Select(w=>w.icon).FirstOrDefault()
                 };
                 var forecastForDay = new Forecasts
                 {
