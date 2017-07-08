@@ -147,7 +147,6 @@
     </Compile>
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Models\Enums\Cities.cs" />
-    <Compile Include="Models\ForecastViewModel.cs" />
     <Compile Include="Models\WeatherAPIEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\WeatherForecast.cs" />

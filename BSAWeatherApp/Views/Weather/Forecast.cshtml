@@ -1,40 +1,42 @@
-﻿@model BSAWeatherApp.Models.ForecastViewModel
+﻿@model BSAWeatherApp.Models.Forecast
 <link href="~/Content/style.css" rel="stylesheet" />
 <div class="container">
     <div class="row">
         <a class="btn btn-outline-primary" href=@Url.Action("Filter", "Weather") id="backToFilter">
             <i class="glyphicon glyphicon-arrow-left"></i> Back to filter
         </a>
-        <h2 id="forecastHeader">Weather for @Model.CityName (@Model.Country)</h2>
+        <h2 id="forecastHeader">Weather for @Model.City.Name (@Model.City.Country)</h2>
     </div>
     <div class="table row">
-        <table class="table-condensed table-hover" id="forecastTable">
+        <table class="table" id="forecastTable">
             <thead>
                 <tr>
-                    <td><b>Day:</b></td>
-                    <td><b>Morning temperature ℃</b></td>
-                    <td><b>Day temperature ℃</b></td>
-                    <td><b>Evening temperature ℃</b></td>
-                    <td><b>Night temperature ℃</b></td>
-                    <td><b>Minimum temperature ℃</b></td>
-                    <td><b>Maximum temperature ℃</b></td>
+                    <td><b>Day</b></td>
+                    <td><b>Morning ℃</b></td>
+                    <td><b>Day ℃</b></td>
+                    <td><b>Evening ℃</b></td>
+                    <td><b>Night ℃</b></td>
+                    <td><b>Minimum ℃</b></td>
+                    <td><b>Maximum ℃</b></td>
                     <td><b>Weather</b></td>
                     <td></td>
                 </tr>
             </thead>
             <tbody>
-                @foreach(var weather in Model.WeatherForecast)
+                @foreach(var weather in Model.List)
                 {
-                    var icon = $"http://openweathermap.org/img/w/{weather.Weather.Icon}.png";
+                    var date = weather.Dt.UnixTimeStampToDateTime();
+                    var weatherDescription = weather.Weather.FirstOrDefault();
+                    var icon = $"http://openweathermap.org/img/w/{weatherDescription.Icon}.png";
                     <tr>
-                        <td>@weather.Date.DayOfWeek (@weather.Date.ToShortDateString())</td>
-                        <td>@weather.Temperature.MorningTemp</td>
-                        <td>@weather.Temperature.DayTemp</td>
-                        <td>@weather.Temperature.EveningTemp</td>
-                        <td>@weather.Temperature.NightTemp</td>
-                        <td>@weather.Temperature.MinTemp</td>
-                        <td>@weather.Temperature.MaxTemp</td>
-                        <td>@weather.Weather.Main / @weather.Weather.Description</td>
+                        <td>@date.DayOfWeek (@date.ToShortDateString())</td>
+                        <td>@weather.Temp.Morn</td>
+                        <td>@weather.Temp.Day</td>
+                        <td>@weather.Temp.Eve</td>
+                        <td>@weather.Temp.Night</td>
+                        <td>@weather.Temp.Min</td>
+                        <td>@weather.Temp.Max</td>
+                        <td>@weatherDescription.Main / @weatherDescription.Description</td>
                         <td><img  src="@icon" /></td>
                     </tr>
                 }
