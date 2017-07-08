@@ -1,7 +1,7 @@
 ﻿using BSAWeatherApp.Models;
 using Newtonsoft.Json;
 using System;
-using System.Net;
+using System.Net.Http;
 
 namespace BSAWeatherApp.Services
 {
@@ -16,8 +16,8 @@ namespace BSAWeatherApp.Services
             string url = $"http://api.openweathermap.org/data/2.5/forecast/daily?q={q}&cnt={cnt}&APPID={APIKEY}&units=metric";
             try
             {
-                var client = new WebClient();
-                var json = client.DownloadString(url);
+                var client = new HttpClient();
+                var json = client.GetStringAsync(url).Result;
                 var jsonObject = JsonConvert.DeserializeObject<Forecast>(json);
                 return jsonObject;
             }
