@@ -14,17 +14,10 @@ namespace BSAWeatherApp.Services
             string cnt = periods; // period in days
             string q = customCity == null || customCity == "" ? defaultCity : customCity;
             string url = $"http://api.openweathermap.org/data/2.5/forecast/daily?q={q}&cnt={cnt}&APPID={APIKEY}&units=metric";
-            try
-            {
-                var client = new HttpClient();
-                var json = client.GetStringAsync(url).Result;
-                var jsonObject = JsonConvert.DeserializeObject<Forecast>(json);
-                return jsonObject;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            var client = new HttpClient();
+            var json = client.GetStringAsync(url).Result;
+            var jsonObject = JsonConvert.DeserializeObject<Forecast>(json);
+            return jsonObject;
         }
     }
 }
