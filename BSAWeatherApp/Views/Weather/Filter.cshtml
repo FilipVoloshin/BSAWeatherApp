@@ -10,8 +10,7 @@
         new SelectListItem{ Text = "For a week", Value = "7"}
     };
 }
-<link href="~/Content/style.css" rel="stylesheet" />
-<div class="container">
+<div class="container" id="filterContainer">
 
     @if (ViewBag.Error)
     {
@@ -41,9 +40,11 @@
             <p></p>
         </div>
     }
+    @section scripts{
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/weatherForecast.js"></script>
+    }
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/weatherForecast.js"></script>
 </div>
 
 

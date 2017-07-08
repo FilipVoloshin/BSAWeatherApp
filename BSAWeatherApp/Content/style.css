@@ -1,4 +1,4 @@
-﻿#backToFilter, #customCityGroup, #periodsCityGroup {
+﻿#customCityGroup, #periodsCityGroup {
     margin-top: 10px;
 }
 
@@ -7,10 +7,21 @@
 }
 
 #forecastHeader {
-    text-align: center;
+    margin-left: 50px;
 }
 
-#forecastTable{
+#forecastTable {
     margin-top: 50px;
 }
 
+#backToFilter {
+    text-align:center;
+}
+
+#filterContainer, #forecastContainer {
+    margin-top: 50px;
+}
+
+#uaFlagImg {
+    margin-left:10px;
+}

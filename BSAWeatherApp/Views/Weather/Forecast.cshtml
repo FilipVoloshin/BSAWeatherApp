@@ -1,14 +1,17 @@
 ﻿@model BSAWeatherApp.Models.Forecast
-<link href="~/Content/style.css" rel="stylesheet" />
-<div class="container">
+<div class="container" id="forecastContainer">
     <div class="row">
         <a class="btn btn-outline-primary" href=@Url.Action("Filter", "Weather") id="backToFilter">
             <i class="glyphicon glyphicon-arrow-left"></i> Back to filter
         </a>
         <h2 id="forecastHeader">Weather for @Model.City.Name (@Model.City.Country)</h2>
+        @if(Model.City.Country == "UA")
+        {
+            <img src="~/Content/img/ua_flag.png" width="50" height="40" id="uaFlagImg"/>
+        }
     </div>
     <div class="table row">
-        <table class="table" id="forecastTable">
+        <table class="table-hover table-condensed" id="forecastTable">
             <thead>
                 <tr>
                     <td><b>Day</b></td>
@@ -44,5 +47,8 @@
         </table>
     </div>
 </div>
-
+@section scripts{
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/weatherForecast.js"></script>
+}
 
