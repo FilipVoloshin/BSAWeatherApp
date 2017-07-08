@@ -2,6 +2,9 @@
 <link href="~/Content/style.css" rel="stylesheet" />
 <div class="container">
     <div class="row">
+        <a class="btn btn-outline-primary" href=@Url.Action("Filter", "Weather") id="backToFilter">
+            <i class="glyphicon glyphicon-arrow-left"></i> Back to filter
+        </a>
         <h2 id="forecastHeader">Weather for @Model.CityName (@Model.Country)</h2>
     </div>
     <div class="table row">
@@ -32,7 +35,7 @@
                         <td>@weather.Temperature.MinTemp</td>
                         <td>@weather.Temperature.MaxTemp</td>
                         <td>@weather.Weather.Main / @weather.Weather.Description</td>
-                        <td><img src="@icon" /></td>
+                        <td><img  src="@icon" /></td>
                     </tr>
                 }
             </tbody>
