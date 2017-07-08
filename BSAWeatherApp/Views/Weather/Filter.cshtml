@@ -22,21 +22,21 @@
 
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <h2><i><text id="city"></text></i>Weather forecast</h2>
+        <div class="row"><h2><i><text id="city"></text></i>Weather forecast</h2></div>
         <div class="col-md-4">
             <div class="form" id="citiesGroup">
-                @Html.Label("defaultCity", "Select city:")
-                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
+                @Html.Label("customCity", "Enter city name:")
+                @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
             </div>
             <div class="form" id="customCityGroup">
-                @Html.Label("customCity", "Select custom city:")
-                @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
+                @Html.Label("defaultCity", "Select city from list:")
+                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
             </div>
             <div class="form" id="periodsCityGroup">
                 @Html.Label("period", "Select period:")
                 @Html.DropDownList("period", daysPeriodBind, new { @class = "form-control" })
             </div>
-            <input type="submit" id="weatherSbmt" value="Get forecast" class="btn btn-default" />
+            <input type="submit" id="weatherSbmt" value="Get forecast" class="btn btn-outline-success" />
             <p></p>
         </div>
     }

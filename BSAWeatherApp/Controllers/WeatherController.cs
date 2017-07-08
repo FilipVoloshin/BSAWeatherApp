@@ -15,7 +15,7 @@ namespace BSAWeatherApp.Controllers
         // GET: Weather/Forecast
         public ActionResult Forecast(string defaultCity, string customCity, string period)
         {
-            var weatherForecast = new WeatherForecast();
+            var weatherForecast = new ForecastProvider();
             var weatherForecastVm = weatherForecast.GetWeatherForecast(defaultCity, customCity, period);
             return View(weatherForecastVm);
         }
