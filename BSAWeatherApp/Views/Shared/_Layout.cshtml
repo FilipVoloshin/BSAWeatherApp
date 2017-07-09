@@ -6,7 +6,6 @@
     <title>BSA 2017 Weather Api</title>
     @Styles.Render("~/Content/fontawesome")
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -19,7 +18,8 @@
             </div>
             <ul class="nav navbar-nav">
             </ul>
-            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult" }, new { @class = "navbar-form navbar-right" }))
+            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult" , OnSuccess = "weatherResultAppear()" },
+                new { @class = "navbar-form navbar-right" }))
             {
                 <div class="input-group">
                     @Html.TextBox("weatherCity", null, new { @class = "form-control", @required = "required", placeholder = "City name" })
@@ -43,6 +43,7 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/own")
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -12,3 +12,14 @@
 $("#defaultCity").change(function () {
     changeSelectType();
 });
+
+var firstValue = true;
+function weatherResultAppear() {
+    
+    if (firstValue) {
+        firstValue = false;
+        $("#weatherResult").hide().fadeIn(2000);
+    }
+
+
+}
