@@ -5,16 +5,6 @@ namespace BSAWeatherApp.Helpers
 {
     public class UrlGenerator
     {
-        private string _defaultCity;
-        private string _customCity;
-        private string _daysCount;
-
-        public UrlGenerator(string defaultCity, string customCity, string daysCount)
-        {
-            _defaultCity = defaultCity;
-            _customCity = customCity;
-            _daysCount = daysCount;
-        }
         public string BaseUrl
         {
             get
@@ -40,13 +30,17 @@ namespace BSAWeatherApp.Helpers
             }
         }
 
-        public string GenerateUrlByFilterSettings()
+        public string GenerateForecastUrl(string defaultCity, string customCity, string daysCount)
         {
-            string cnt = _daysCount; // period in days
-            string q = _customCity == null || _customCity == "" ? _defaultCity : _customCity;
-            string url = $"{BaseUrl}/forecast/daily?q={q}&cnt={cnt}&APPID={ApiKey}&units=metric";
+            string url = defaultCity == String.Empty ?
+                $"{BaseUrl}/forecast/daily?q={customCity}&cnt={daysCount}&APPID={ApiKey}&units=metric" :
+                $"{BaseUrl}/forecast/daily?q={defaultCity}&cnt={daysCount}&APPID={ApiKey}&units=metric";
             return url;
+        }
 
+        public string GenerateWeatherUrl(string city)
+        {
+            return $"{BaseUrl}/weather?q={city}&appid={ApiKey}&units=metric";
         }
     }
 }
