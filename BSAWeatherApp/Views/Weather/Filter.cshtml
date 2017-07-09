@@ -10,10 +10,10 @@
     };
 }
 <div class="container" id="filterContainer">
-    
+
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <div class="col-md-6">
+        <div class="col-md-5">
             <h2>Weather forecast</h2>
             <div class="form" id="citiaesGroup">
                 @Html.Label("customCity", "Enter city name:")

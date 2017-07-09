@@ -5,13 +5,9 @@
             <i class="fa fa fa-arrow-left" aria-hidden="true"></i> Back to filter
         </a>
         <h2 id="forecastHeader">Weather for @Model.City.Name (@Model.City.Country)</h2>
-        @if(Model.City.Country == "UA")
-        {
-            <img src="~/Content/img/ua_flag.png" width="50" height="40" id="uaFlagImg"/>
-        }
     </div>
     <div class="table row">
-        <table class="table-hover table-condensed" id="forecastTable">
+        <table class="table table-hover" id="forecastTable">
             <thead>
                 <tr>
                     <td><b>Day</b></td>
@@ -48,7 +44,5 @@
     </div>
 </div>
 @section scripts{
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/weatherForecast.js"></script>
 }
-

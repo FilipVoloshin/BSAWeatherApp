@@ -1,0 +1,58 @@
+﻿#customCityGroup, #daysCountCityGroup {
+    margin-top: 10px;
+}
+
+#weatherSbmt, #alertBoxForError {
+    margin-top: 20px;
+}
+
+#forecastHeader {
+    margin-left: 50px;
+}
+
+#forecastTable {
+    margin-top: 50px;
+}
+
+#backToFilter {
+    text-align: center;
+}
+
+#filterContainer, #forecastContainer {
+    margin-top: 50px;
+}
+
+#uaFlagImg {
+    margin-left: 10px;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .error-actions .btn {
+        margin-right: 10px;
+    }
+
+#weatherNowDiv {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 60%;
+    border: 0.5px solid #73AD21;
+    padding: 10px;
+    padding: 10px 40px;
+    border-radius: 15px 50px;
+    box-shadow: 10px 10px grey;
+}
+
+#weatherNowTmp {
+    margin-top: 10px;
+    margin-bottom: 20px;
