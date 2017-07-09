@@ -12,3 +12,7 @@
 $("#defaultCity").change(function () {
     changeSelectType();
 });
+
+$(document).ready(function () {
+    $("#uaFlagImg").fadeOut(10000);
+})

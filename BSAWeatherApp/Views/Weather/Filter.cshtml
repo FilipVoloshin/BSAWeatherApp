@@ -5,45 +5,41 @@
     var cityBind = new SelectList(Enum.GetValues(typeof(Cities)));
     var daysPeriodBind = new List<SelectListItem>
     {
-        new SelectListItem{ Text = "For today", Value = "forToday", Selected = true},
-        new SelectListItem{ Text = "For three days", Value = "forThreeDays"},
-        new SelectListItem{ Text = "For a week", Value = "forAWeek"}
+        new SelectListItem{ Text = "For today", Value = "1", Selected = true},
+        new SelectListItem{ Text = "For three days", Value = "3"},
+        new SelectListItem{ Text = "For a week", Value = "7"}
     };
 }
-<link href="~/Content/style.css" rel="stylesheet" />
-<div class="container">
+<div class="container" id="filterContainer">
 
-    @if (ViewBag.Error)
-    {
-        <div class="alert alert-danger alert-dismissible" role="alert" id="alertBoxForError">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning!</strong> @ViewBag.ErrorMessage
-        </div>
-    }
-
+    <div class="row"><h2>Weather forecast</h2></div>
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <h2><i><text id="city"></text></i>Weather forecast</h2>
         <div class="col-md-4">
-            <div class="form" id="citiesGroup">
-                @Html.Label("defaultCity", "Select city:")
-                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
+            <div class="form" id="citiaesGroup">
+                @Html.Label("customCity", "Enter city name:")
+                @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
             </div>
             <div class="form" id="customCityGroup">
-                @Html.Label("customCity", "Select custom city:")
-                @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
+                @Html.Label("defaultCity", "Select city from list:")
+                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
             </div>
             <div class="form" id="periodsCityGroup">
                 @Html.Label("period", "Select period:")
                 @Html.DropDownList("period", daysPeriodBind, new { @class = "form-control" })
             </div>
-            <input type="submit" id="weatherSbmt" value="Get forecast" class="btn btn-default" />
+            <button value="GetForecast" type="submit" id="weatherSbmt" class="btn btn-outline-success">
+                Get forecast
+                <i class="fa fa-cloud" aria-hidden="true"></i>
+            </button>
             <p></p>
         </div>
     }
+    @section scripts{
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/weatherForecast.js"></script>
+    }
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/weatherForecast.js"></script>
 </div>
 
 

@@ -7,10 +7,35 @@
 }
 
 #forecastHeader {
-    text-align: center;
+    margin-left: 50px;
 }
 
-#forecastTable{
+#forecastTable {
     margin-top: 50px;
 }
 
+#backToFilter {
+    text-align:center;
+}
+
+#filterContainer, #forecastContainer {
+    margin-top: 50px;
+}
+
+#uaFlagImg {
+    margin-left:10px;
+}
+
+.error-template {
+    padding: 40px 15px;
+    text-align: center;
+}
+
+.error-actions {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+    .error-actions .btn {
+        margin-right: 10px;
+    }
