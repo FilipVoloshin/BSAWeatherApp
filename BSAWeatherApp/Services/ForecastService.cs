@@ -6,12 +6,21 @@ namespace BSAWeatherApp.Services
 {
     public class ForecastProvider
     {
-        public Forecast GetWeatherApiObject(string url)
+        public Forecast GetWeatherForecastObject(string url)
         {
             var client = new HttpClient();
             var json = client.GetStringAsync(url).Result;
-            var jsonObject = JsonConvert.DeserializeObject<Forecast>(json);
+            Forecast jsonObject = JsonConvert.DeserializeObject<Forecast>(json);
             return jsonObject;
         }
+
+        public WeatherNow GetWeatherNowObject(string url)
+        {
+            var client = new HttpClient();
+            var json = client.GetStringAsync(url).Result;
+            WeatherNow jsonObject = JsonConvert.DeserializeObject<WeatherNow>(json);
+            return jsonObject;
+        }
+
     }
 }
