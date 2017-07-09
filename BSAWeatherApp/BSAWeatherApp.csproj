@@ -161,6 +161,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\UrlGenerator.cs" />
     <Compile Include="Models\Enums\Cities.cs" />
     <Compile Include="Models\WeatherAPIEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -226,7 +227,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Forecast\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

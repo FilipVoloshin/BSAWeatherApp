@@ -24,9 +24,9 @@
                 @Html.Label("defaultCity", "Select city from list:")
                 @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
             </div>
-            <div class="form" id="periodsCityGroup">
-                @Html.Label("period", "Select period:")
-                @Html.DropDownList("period", daysPeriodBind, new { @class = "form-control" })
+            <div class="form" id="daysCountCityGroup">
+                @Html.Label("daysCount", "Select period:")
+                @Html.DropDownList("daysCount", daysPeriodBind, new { @class = "form-control" })
             </div>
             <button value="GetForecast" type="submit" id="weatherSbmt" class="btn btn-outline-success">
                 Get forecast
