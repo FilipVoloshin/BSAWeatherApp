@@ -22,13 +22,22 @@ namespace BSAWeatherApp.Controllers
             return View();
         }
 
-        // GET : Weather/WeatherNow
+        // POST : Weather/WeatherNow
+        [HttpGet]
         public ActionResult WeatherNow(string weatherCity)
         {
-            var url = _urlGenerator.GenerateWeatherUrl(weatherCity);
-            var model = _forecastProvide.GetWeatherNowObject(url);
-            return View(model);
+            try
+            {
+                var url = _urlGenerator.GenerateWeatherUrl(weatherCity);
+                var model = _forecastProvide.GetWeatherNowObject(url);
+                return View(model);
+            }
+            catch (AggregateException e)
+            {
+                return RedirectToAction("NotFound", "Error");
+            }
         }
+
         // GET: Weather/Forecast
         public ActionResult Forecast(string defaultCity, string customCity, string daysCount)
         {

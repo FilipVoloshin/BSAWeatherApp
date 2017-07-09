@@ -1,8 +1,14 @@
 ﻿@model BSAWeatherApp.Models.WeatherNow
+
 @{
     ViewBag.Title = "WeatherNow";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var weatherDescription = Model.Weather.FirstOrDefault();
 }
 
-<h2>WeatherNow</h2>
-
+<div class="row"></div>
+<div class="col-md-5" id="weatherNowDiv">
+     <i class="fa fa-2x fa-spin fa-cloud"></i><h5 id="watherNowName">Weather in <i>@Model.Name</i></h5>
+    <h1 id="weatherNowTmp">@Model.Main.Temp °C</h1>
+    <h5>@weatherDescription.Main / @weatherDescription.Description</h5>
+</div>

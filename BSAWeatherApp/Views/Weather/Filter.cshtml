@@ -10,11 +10,11 @@
     };
 }
 <div class="container" id="filterContainer">
-
-    <div class="row"><h2>Weather forecast</h2></div>
+    
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <div class="col-md-4">
+        <div class="col-md-6">
+            <h2>Weather forecast</h2>
             <div class="form" id="citiaesGroup">
                 @Html.Label("customCity", "Enter city name:")
                 @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
@@ -34,11 +34,8 @@
             <p></p>
         </div>
     }
-    @section scripts{
-        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-        <script src="~/Scripts/weatherForecast.js"></script>
-    }
-
 </div>
-
+@section scripts{
+    <script src="~/Scripts/weatherForecast.js"></script>
+}
 
