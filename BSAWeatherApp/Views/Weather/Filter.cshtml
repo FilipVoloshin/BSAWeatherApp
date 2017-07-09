@@ -12,19 +12,11 @@
 }
 <div class="container" id="filterContainer">
 
-    @if (ViewBag.Error)
-    {
-        <div class="alert alert-danger alert-dismissible" role="alert" id="alertBoxForError">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <strong>Warning!</strong> @ViewBag.ErrorMessage
-        </div>
-    }
-
+    <div class="row"><h2>Weather forecast</h2></div>
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <div class="row"><h2><i><text id="city"></text></i>Weather forecast</h2></div>
         <div class="col-md-4">
-            <div class="form" id="citiesGroup">
+            <div class="form" id="citiaesGroup">
                 @Html.Label("customCity", "Enter city name:")
                 @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
             </div>
