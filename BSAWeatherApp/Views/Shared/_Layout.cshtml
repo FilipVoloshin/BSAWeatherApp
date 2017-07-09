@@ -9,11 +9,26 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" id="navbar">
-        <a class="navbar-brand" href=@Url.Action("Filter", "Weather")>
-            <img src="~/Content/img/weather_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Weather app
-        </a>
+    <nav class="navbar navbar-toggleable fixed-top" id="navbar">
+        <div class="navbar-header">
+            <a class="navbar-brand" href=@Url.Action("Filter", "Weather")>
+                <img src="~/Content/img/weather_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                Weather app
+            </a>
+        </div>
+        @using (Html.BeginForm("WeatherNow", "Weather", FormMethod.Get, new { @class = "navbar-toggler-right form-inline" }))
+        {
+            <div class="input-group">
+                @Html.TextBox("weatherCity", null, new { @class = "form-control", @required = "required", placeholder = "City name" })
+
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-outline-primary">
+                        Get weather
+                        <i class="fa fa-sun-o" aria-hidden="true"></i>
+                    </button>
+                </span>
+            </div>
+        }
     </nav>
     <div class="container body-content">
         @RenderBody()
@@ -22,9 +37,12 @@
             <p>&copy; BSA @DateTime.Now.Year Weather Application by Philip Voloshin</p>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

@@ -6,24 +6,49 @@ namespace BSAWeatherApp.Controllers
 {
     public class WeatherController : Controller
     {
+        IUrlGenerator urlGenerator;
+        IForecastProvider forecastProvider;
+
+        public WeatherController(IForecastProvider fpParam, IUrlGenerator urlGParam)
+        {
+            forecastProvider = fpParam;
+            urlGenerator = urlGParam;
+        }
+
         // GET: Weather/Settings
         public ActionResult Filter()
         {
             return View();
         }
 
-        // GET: Weather/Forecast
-        public ActionResult Forecast(string defaultCity, string customCity, string period)
+        // POST : Weather/WeatherNow
+        [HttpGet]
+        public ActionResult WeatherNow(string weatherCity)
         {
             try
             {
-                var weatherForecast = new ForecastProvider();
-                var weatherForecastVm = weatherForecast.GetWeatherForecast(defaultCity, customCity, period);
-                return View(weatherForecastVm);
+                var url = urlGenerator.GenerateWeatherUrl(weatherCity);
+                var model = forecastProvider.GetWeatherNowObject(url);
+                return View(model);
             }
             catch (AggregateException e)
             {
-                return RedirectToAction("NotFound","Error");
+                return RedirectToAction("NotFound", "Error");
+            }
+        }
+
+        // GET: Weather/Forecast
+        public ActionResult Forecast(string defaultCity, string customCity, string daysCount)
+        {
+            try
+            {
+                var url = urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
+                var model = forecastProvider.GetWeatherForecastObject(url);
+                return View(model);
+            }
+            catch (AggregateException e)
+            {
+                return RedirectToAction("NotFound", "Error");
             }
         }
 

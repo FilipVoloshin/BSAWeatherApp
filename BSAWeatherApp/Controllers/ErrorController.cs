@@ -4,7 +4,7 @@ namespace BSAWeatherApp.Controllers
 {
     public class ErrorController : Controller
     {
-        // GET: Error
+        // GET: Error/NotFound
         public ActionResult NotFound()
         {
             return View();
