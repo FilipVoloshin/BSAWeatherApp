@@ -2,7 +2,7 @@
 <div class="container" id="forecastContainer">
     <div class="row">
         <a class="btn btn-outline-primary" href=@Url.Action("Filter", "Weather") id="backToFilter">
-            <i class="glyphicon glyphicon-arrow-left"></i> Back to filter
+            <i class="fa fa fa-arrow-left" aria-hidden="true"></i> Back to filter
         </a>
         <h2 id="forecastHeader">Weather for @Model.City.Name (@Model.City.Country)</h2>
         @if(Model.City.Country == "UA")

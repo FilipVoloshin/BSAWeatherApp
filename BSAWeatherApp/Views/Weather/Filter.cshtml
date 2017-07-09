@@ -28,7 +28,10 @@
                 @Html.Label("period", "Select period:")
                 @Html.DropDownList("period", daysPeriodBind, new { @class = "form-control" })
             </div>
-            <input type="submit" id="weatherSbmt" value="Get forecast" class="btn btn-outline-success" />
+            <button value="GetForecast" type="submit" id="weatherSbmt" class="btn btn-outline-success">
+                Get forecast
+                <i class="fa fa-cloud" aria-hidden="true"></i>
+            </button>
             <p></p>
         </div>
     }
