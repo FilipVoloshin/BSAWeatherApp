@@ -22,14 +22,14 @@ namespace BSAWeatherApp.Controllers
         }
 
         // POST : Weather/WeatherNow
-        [HttpGet]
+        [HttpPost]
         public ActionResult WeatherNow(string weatherCity)
         {
             try
             {
                 var url = urlGenerator.GenerateWeatherUrl(weatherCity);
                 var model = forecastProvider.GetWeatherNowObject(url);
-                return View(model);
+                return PartialView(model);
             }
             catch (AggregateException e)
             {

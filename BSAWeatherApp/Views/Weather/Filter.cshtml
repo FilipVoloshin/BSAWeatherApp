@@ -9,11 +9,11 @@
         new SelectListItem{ Text = "For a week", Value = "7"}
     };
 }
-<div class="container" id="filterContainer">
+<div class="row" id="filterContainer">
 
     @using (Html.BeginForm("Forecast", "Weather", FormMethod.Get))
     {
-        <div class="col-md-5">
+        <div class="col-md-4">
             <h2>Weather forecast</h2>
             <div class="form" id="citiaesGroup">
                 @Html.Label("customCity", "Enter city name:")
@@ -34,6 +34,9 @@
             <p></p>
         </div>
     }
+    <div class="col-md-5 col-md-push-2" id="weatherResult">
+
+    </div>
 </div>
 @section scripts{
     <script src="~/Scripts/weatherForecast.js"></script>
