@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace BSAWeatherApp.Services
 {
-    public class ForecastProvider
+    public class ForecastProvider : IForecastProvider
     {
         public Forecast GetWeatherForecastObject(string url)
         {

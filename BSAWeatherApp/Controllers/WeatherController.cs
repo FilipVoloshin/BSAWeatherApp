@@ -1,5 +1,4 @@
-﻿using BSAWeatherApp.Helpers;
-using BSAWeatherApp.Services;
+﻿using BSAWeatherApp.Services;
 using System;
 using System.Web.Mvc;
 
@@ -7,13 +6,13 @@ namespace BSAWeatherApp.Controllers
 {
     public class WeatherController : Controller
     {
-        private UrlGenerator _urlGenerator;
-        private ForecastProvider _forecastProvide;
+        IUrlGenerator urlGenerator;
+        IForecastProvider forecastProvider;
 
-        public WeatherController()
+        public WeatherController(IForecastProvider fpParam, IUrlGenerator urlGParam)
         {
-            _urlGenerator = new UrlGenerator();
-            _forecastProvide = new ForecastProvider();
+            forecastProvider = fpParam;
+            urlGenerator = urlGParam;
         }
 
         // GET: Weather/Settings
@@ -28,8 +27,8 @@ namespace BSAWeatherApp.Controllers
         {
             try
             {
-                var url = _urlGenerator.GenerateWeatherUrl(weatherCity);
-                var model = _forecastProvide.GetWeatherNowObject(url);
+                var url = urlGenerator.GenerateWeatherUrl(weatherCity);
+                var model = forecastProvider.GetWeatherNowObject(url);
                 return View(model);
             }
             catch (AggregateException e)
@@ -43,8 +42,8 @@ namespace BSAWeatherApp.Controllers
         {
             try
             {
-                var url = _urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
-                var model = _forecastProvide.GetWeatherForecastObject(url);
+                var url = urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
+                var model = forecastProvider.GetWeatherForecastObject(url);
                 return View(model);
             }
             catch (AggregateException e)

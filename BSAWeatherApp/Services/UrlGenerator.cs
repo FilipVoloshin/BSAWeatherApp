@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Configuration;
 
-namespace BSAWeatherApp.Helpers
+namespace BSAWeatherApp.Services
 {
-    public class UrlGenerator
+    public class UrlGenerator : IUrlGenerator
     {
         public string BaseUrl
         {
