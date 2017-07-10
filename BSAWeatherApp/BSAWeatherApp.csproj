@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201707101736271_RenamedTableCityModelToCities.Designer.cs">
       <DependentUpon>201707101736271_RenamedTableCityModelToCities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707101828280_AddedColumnDesriptionToCities.cs" />
+    <Compile Include="Migrations\201707101828280_AddedColumnDesriptionToCities.Designer.cs">
+      <DependentUpon>201707101828280_AddedColumnDesriptionToCities.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Services\IUrlGenerator.cs" />
@@ -244,6 +248,7 @@
     <Content Include="Views\Weather\Forecast.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Weather\WeatherNow.cshtml" />
+    <Content Include="Views\Weather\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -264,6 +269,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707101736271_RenamedTableCityModelToCities.resx">
       <DependentUpon>201707101736271_RenamedTableCityModelToCities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707101828280_AddedColumnDesriptionToCities.resx">
+      <DependentUpon>201707101828280_AddedColumnDesriptionToCities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

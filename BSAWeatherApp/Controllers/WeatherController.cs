@@ -43,6 +43,7 @@ namespace BSAWeatherApp.Controllers
         }
 
         // POST: Weather/Forecast
+        [HttpPost]
         public ActionResult Forecast(string defaultCity, string customCity, string daysCount)
         {
             try
@@ -55,6 +56,12 @@ namespace BSAWeatherApp.Controllers
             {
                 return RedirectToAction("NotFound", "Error");
             }
+        }
+
+        //GET: Weather/Settings
+        public ActionResult Settings()
+        {
+            return View();
         }
 
     }
