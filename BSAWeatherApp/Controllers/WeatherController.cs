@@ -66,6 +66,8 @@ namespace BSAWeatherApp.Controllers
             return View(data);
         }
 
+        //POST: Weather/AddCity
+        [HttpPost]
         public ActionResult AddCity(CityModel city)
         {
             if (city != null)
@@ -75,6 +77,34 @@ namespace BSAWeatherApp.Controllers
                 return Json(new { Success = true, City = city });
             }
             return Json(new { Success = false });
+        }
+
+        //POST: Weather/DeleteCity
+        [HttpPost]
+        public ActionResult DeleteCity(int id)
+        {
+            if (id != 0)
+            {
+                citiesDb.Delete(id);
+                citiesDb.Save();
+                return Json(new { Message = "Deleted!" });
+            }
+            return Json(new { Message = "Error!" });
+
+        }
+
+        //POST: Weather/UpdateCity
+        [HttpPost]
+        public ActionResult UpdateCity(CityModel city)
+        {
+            if (city != null)
+            {
+                citiesDb.Update(city);
+                citiesDb.Save();
+                return Json(new { Message = "Deleted!" });
+            }
+            return Json(new { Message = "Error!" });
+
         }
     }
 }

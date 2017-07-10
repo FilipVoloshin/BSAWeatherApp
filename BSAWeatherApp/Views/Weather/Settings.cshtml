@@ -38,14 +38,17 @@
                 <tbody>
                     @foreach (var city in Model)
                     {
-                        <tr>
-                            <td>@Html.TextBoxFor(m=>city.Name, new { @class = "form-control" })</td>
-                            <td>@Html.TextBoxFor(m => city.Description, new { @class = "form-control" })</td>
+                        <tr id="tableRow_@city.Id">
+                            <td>@Html.TextBoxFor(m=>city.Name, new { @class = "form-control", @id=$"city_{city.Id}",
+                               @onchange = $"changeEnabled({city.Id})" })</td>
+                            <td>@Html.TextBoxFor(m => city.Description, new { @class = "form-control",@id=$"description_{city.Id}",
+                               @onchange = $"changeEnabled({city.Id})" })</td>
                             <td>
-                                <button class="btn btn-success">
+                                <button class="btn btn-success" id="update_@city.Id" 
+                                        onclick="updateCity(@city.Id)" disabled>
                                     <span class="fa fa-refresh"></span>
                                 </button>
-                                <button class="btn btn-danger">
+                                <button class="btn btn-danger" onclick="deleteCity(@city.Id)">
                                     <span class="fa fa-trash"></span>
                                 </button>
                             </td>
