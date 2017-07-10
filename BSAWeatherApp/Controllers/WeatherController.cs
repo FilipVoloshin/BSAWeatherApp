@@ -2,6 +2,7 @@
 using BSAWeatherApp.Models;
 using BSAWeatherApp.Services;
 using System;
+using System.Collections;
 using System.Web.Mvc;
 
 namespace BSAWeatherApp.Controllers
@@ -61,7 +62,8 @@ namespace BSAWeatherApp.Controllers
         //GET: Weather/Settings
         public ActionResult Settings()
         {
-            return View();
+            var data = citiesDb.GetAll();
+            return View(data);
         }
 
         public ActionResult AddCity(CityModel city)
@@ -70,12 +72,9 @@ namespace BSAWeatherApp.Controllers
             {
                 citiesDb.Create(city);
                 citiesDb.Save();
-                return Json(new { Success = true });
+                return Json(new { Success = true, City = city });
             }
-
             return Json(new { Success = false });
-
         }
-
     }
 }

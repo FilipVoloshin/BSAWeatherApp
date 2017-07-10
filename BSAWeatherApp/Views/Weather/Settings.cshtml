@@ -1,14 +1,15 @@
-﻿
+﻿@model IEnumerable<CityModel>
 @{
     ViewBag.Title = "Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var count = 1;
 }
 <div class="container" id="settings">
     <div class="row">
         @using (Ajax.BeginForm("AddCity", "Weather",
-            new { name = "name", description = "description" },
-            new AjaxOptions { HttpMethod = "POST",OnSuccess = "updateSettings" },
-            new { @class = "form" }))
+                    new { name = "name", description = "description" },
+                    new AjaxOptions { HttpMethod = "POST", OnSuccess = "updateSettings" },
+                    new { @class = "form" }))
         {
             <div class="col-md-3">
                 <h2>Add city: <span class="fa fa-plus" id="addedCity"></span></h2>
@@ -18,12 +19,41 @@
                 </div>
                 <div class="form" id="">
                     @Html.Label("Description", "Add description (optional):")
-                    @Html.TextArea("description", null, new { @class = "form-control", @rows = "5"})
+                    @Html.TextArea("description", null, new { @class = "form-control", @rows = "5" })
                 </div>
                 <button type="submit" id="addCity" class="btn btn-success">
                     Add city
                 </button>
             </div>
         }
+        <div class="col-md-8 col-md-push-1" >
+            <table class="table table-striped" id="tableWithCity">
+                <thead>
+                    <tr>
+                        <td style="width:30%">Name<br /></td>
+                        <td style="width:50%">Desription<br /></td>
+                        <td style="width:20%">&nbsp;<br /></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var city in Model)
+                    {
+                        <tr>
+                            <td>@Html.TextBoxFor(m=>city.Name, new { @class = "form-control" })</td>
+                            <td>@Html.TextBoxFor(m => city.Description, new { @class = "form-control" })</td>
+                            <td>
+                                <button class="btn btn-success">
+                                    <span class="fa fa-refresh"></span>
+                                </button>
+                                <button class="btn btn-danger">
+                                    <span class="fa fa-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
