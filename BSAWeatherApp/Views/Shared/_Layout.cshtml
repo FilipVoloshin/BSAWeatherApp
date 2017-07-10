@@ -11,9 +11,17 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href=@Url.Action("Filter", "Weather")>
+                <a class="navbar-brand" href=@Url.Action("Home", "Weather")>
                     <i class="fa fa-thermometer"></i>
-                    Weather app
+                    Weather app&nbsp;
+                </a>
+                <a class="navbar-brand" href=@Url.Action("Home", "Weather")>
+                    <i class="fa fa-home"></i>
+                    Home 
+                </a>
+                <a class="navbar-brand" href=@Url.Action("Settings", "Weather")>
+                    <i class="fa fa-wrench"></i>
+                    Settings
                 </a>
             </div>
             <ul class="nav navbar-nav">
@@ -36,10 +44,6 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; BSA @DateTime.Now.Year Weather Application by Philip Voloshin</p>
-        </footer>
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

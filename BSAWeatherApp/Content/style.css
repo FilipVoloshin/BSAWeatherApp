@@ -2,7 +2,7 @@
     margin-top: 10px;
 }
 
-#weatherSbmt, #alertBoxForError {
+#weatherSbmt, #addCity, #alertBoxForError {
     margin-top: 20px;
 }
 
@@ -36,9 +36,23 @@
 }
 
 #errorDiv {
-    margin-top:15px;
+    margin-top: 15px;
 }
 
 #weatherNowTmp {
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+#settings {
+    margin-top: 50px;
+}
+
+#description {
+    resize: vertical;
+}
+#addedCity {
+    display: none;
+    color: green;
+    margin-left: 100px;
+}

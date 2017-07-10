@@ -26,4 +26,13 @@ function weatherResultAppear() {
 function startAjax() {
     $("#loadSpin").show();
 }
+function updateSettings(data) {
+    $("#name").val("");
+    $("#description").val("");
+    if (data.Success) {
+        $("#addedCity").show();
+        $("#addedCity").hide(3000);
+    }
+
+}
 

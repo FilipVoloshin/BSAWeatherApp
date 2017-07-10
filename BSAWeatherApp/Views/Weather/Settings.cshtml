@@ -3,6 +3,27 @@
     ViewBag.Title = "Settings";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Settings</h2>
-
+<div class="container" id="settings">
+    <div class="row">
+        @using (Ajax.BeginForm("AddCity", "Weather",
+            new { name = "name", description = "description" },
+            new AjaxOptions { HttpMethod = "POST",OnSuccess = "updateSettings" },
+            new { @class = "form" }))
+        {
+            <div class="col-md-3">
+                <h2>Add city: <span class="fa fa-plus" id="addedCity"></span></h2>
+                <div class="form" id="">
+                    @Html.Label("name", "Enter city name:")
+                    @Html.TextBox("name", null, new { @class = "form-control", @required = "required" })
+                </div>
+                <div class="form" id="">
+                    @Html.Label("Description", "Add description (optional):")
+                    @Html.TextArea("description", null, new { @class = "form-control", @rows = "5"})
+                </div>
+                <button type="submit" id="addCity" class="btn btn-success">
+                    Add city
+                </button>
+            </div>
+        }
+    </div>
+</div>

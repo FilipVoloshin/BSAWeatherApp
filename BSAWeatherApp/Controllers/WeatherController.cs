@@ -12,7 +12,7 @@ namespace BSAWeatherApp.Controllers
         IForecastProvider forecastProvider;
         IRepository<CityModel> citiesDb;
 
-        public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator, 
+        public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator,
             IRepository<CityModel> citiesDb)
         {
             this.forecastProvider = forecastProvider;
@@ -62,6 +62,19 @@ namespace BSAWeatherApp.Controllers
         public ActionResult Settings()
         {
             return View();
+        }
+
+        public ActionResult AddCity(CityModel city)
+        {
+            if (city != null)
+            {
+                citiesDb.Create(city);
+                citiesDb.Save();
+                return Json(new { Success = true });
+            }
+
+            return Json(new { Success = false });
+
         }
 
     }
