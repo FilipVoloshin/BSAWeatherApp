@@ -16,7 +16,7 @@ namespace BSAWeatherApp.Controllers
         }
 
         // GET: Weather/Settings
-        public ActionResult Filter()
+        public ActionResult Home()
         {
             return View();
         }
@@ -37,14 +37,14 @@ namespace BSAWeatherApp.Controllers
             }
         }
 
-        // GET: Weather/Forecast
+        // POST: Weather/Forecast
         public ActionResult Forecast(string defaultCity, string customCity, string daysCount)
         {
             try
             {
                 var url = urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
                 var model = forecastProvider.GetWeatherForecastObject(url);
-                return View(model);
+                return PartialView(model);
             }
             catch (AggregateException e)
             {

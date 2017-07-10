@@ -1,29 +1,7 @@
-﻿
-@{
-    ViewBag.Title = "NotFound";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="error-template">
-                <h1>
-                    Oops!
-                </h1>
-                <h2>
-                    404 Not Found
-                </h2>
-                <div class="error-details">
-                    Sorry, an error has occured, Requested page not found.
-                </div>
-                <div class="error-actions">
-                    <a href=@Url.Action("Filter", "Weather") class="btn btn-link">
-                        <i class="fa fa-filter" aria-hidden="true"></i>
-                        Back to filter
-                    </a>
-                </div>
-            </div>
-        </div>
+﻿<div class="col-md-5" id="errorDiv">
+    <div class="alert alert-danger alert-dismissable">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Error!</strong> City was not found
     </div>
 </div>
 

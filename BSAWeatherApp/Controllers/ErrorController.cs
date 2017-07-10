@@ -7,7 +7,7 @@ namespace BSAWeatherApp.Controllers
         // GET: Error/NotFound
         public ActionResult NotFound()
         {
-            return View();
+            return PartialView();
         }
     }
 }

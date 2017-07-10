@@ -219,7 +219,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Weather\Filter.cshtml" />
+    <Content Include="Views\Weather\Home.cshtml" />
     <Content Include="Views\Weather\Forecast.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Weather\WeatherNow.cshtml" />

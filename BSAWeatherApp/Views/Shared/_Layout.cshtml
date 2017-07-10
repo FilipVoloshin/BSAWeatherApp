@@ -18,7 +18,7 @@
             </div>
             <ul class="nav navbar-nav">
             </ul>
-            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult" , OnSuccess = "weatherResultAppear()" },
+            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult" , OnBegin = "startAjax()", OnSuccess = "weatherResultAppear()" },
                 new { @class = "navbar-form navbar-right" }))
             {
                 <div class="input-group">
