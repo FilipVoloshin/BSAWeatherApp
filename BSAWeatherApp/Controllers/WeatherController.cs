@@ -1,4 +1,5 @@
-﻿using BSAWeatherApp.Services;
+﻿using BSAWeatherApp.Context;
+using BSAWeatherApp.Services;
 using System;
 using System.Web.Mvc;
 
@@ -8,7 +9,7 @@ namespace BSAWeatherApp.Controllers
     {
         IUrlGenerator urlGenerator;
         IForecastProvider forecastProvider;
-
+        BSAWeatherContext db = new BSAWeatherContext();
         public WeatherController(IForecastProvider fpParam, IUrlGenerator urlGParam)
         {
             forecastProvider = fpParam;
