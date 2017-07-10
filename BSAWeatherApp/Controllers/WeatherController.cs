@@ -1,4 +1,5 @@
-﻿using BSAWeatherApp.Context;
+﻿using BSAWeatherApp.DataService;
+using BSAWeatherApp.Models;
 using BSAWeatherApp.Services;
 using System;
 using System.Web.Mvc;
@@ -9,11 +10,14 @@ namespace BSAWeatherApp.Controllers
     {
         IUrlGenerator urlGenerator;
         IForecastProvider forecastProvider;
-        BSAWeatherContext db = new BSAWeatherContext();
-        public WeatherController(IForecastProvider fpParam, IUrlGenerator urlGParam)
+        IRepository<CityModel> citiesDb;
+
+        public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator, 
+            IRepository<CityModel> citiesDb)
         {
-            forecastProvider = fpParam;
-            urlGenerator = urlGParam;
+            this.forecastProvider = forecastProvider;
+            this.urlGenerator = urlGenerator;
+            this.citiesDb = citiesDb;
         }
 
         // GET: Weather/Settings

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using Ninject;
 using BSAWeatherApp.Services;
+using BSAWeatherApp.DataService;
+using BSAWeatherApp.Models;
 
 namespace BSAWeatherApp.Util
 {
@@ -27,6 +29,7 @@ namespace BSAWeatherApp.Util
         {
             kernel.Bind<IForecastProvider>().To<ForecastProvider>();
             kernel.Bind<IUrlGenerator>().To<UrlGenerator>();
+            kernel.Bind(typeof(IRepository<CityModel>)).To<CitiesRepository>();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BSAWeatherApp
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Weather", action = "Filter", id = UrlParameter.Optional }
+                defaults: new { controller = "Weather", action = "Home", id = UrlParameter.Optional }
             );
         }
     }
