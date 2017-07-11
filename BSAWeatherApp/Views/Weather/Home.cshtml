@@ -16,6 +16,9 @@
         new SelectListItem{ Text = "For a week", Value = "7"}
     };
 }
+@section content{
+    <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
+}
 <div class="row" id="filterContainer">
 
     @using (Ajax.BeginForm("Forecast", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult", OnBegin = "startAjax()", OnSuccess = "weatherResultAppear()" }))
@@ -29,7 +32,7 @@
             </div>
             <div class="form" id="customCityGroup">
                 @Html.Label("defaultCity", "Select city from list:")
-                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control" })
+                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control cityDropDown" })
             </div>
             <div class="form" id="daysCountCityGroup">
                 @Html.Label("daysCount", "Select period:")
@@ -45,4 +48,7 @@
 
     </div>
 </div>
+@section scripts{
+    <script src="~/Scripts/select2/select2.min.js"></script>
+}
 

@@ -1,5 +1,7 @@
 ﻿var firstValue = true;
-
+$(document).ready(function () {
+    $(".cityDropDown").select2();
+});
 function changeSelectType() {
     var cityDropdownVal = $("#defaultCity").val();
     if (cityDropdownVal !== "") {
