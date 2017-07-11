@@ -7,9 +7,9 @@
 <div class="container" id="settings">
     <div class="row">
         @using (Ajax.BeginForm("AddCity", "Weather",
-                            new { name = "name", description = "description" },
-                            new AjaxOptions { HttpMethod = "POST", OnSuccess = "updateSettings" },
-                            new { @class = "form" }))
+                                new { name = "name", description = "description" },
+                                new AjaxOptions { HttpMethod = "POST", OnSuccess = "updateSettings" },
+                                new { @class = "form" }))
         {
             <div class="col-md-3">
                 <h2>Add city: <span class="fa fa-plus" id="addedCity"></span></h2>
@@ -49,11 +49,11 @@
                             </td>
                             <td>
                                 @Html.TextBoxFor(m => city.Description, new
-                       {
-                           @class = "form-control",
-                           @id = $"description_{city.Id}",
-                           @onchange = $"changeEnabled({city.Id})"
-                       })
+                           {
+                               @class = "form-control",
+                               @id = $"description_{city.Id}",
+                               @onchange = $"changeEnabled({city.Id})"
+                           })
                             </td>
                             <td>
                                 <button class="btn btn-success" id="update_@city.Id"
@@ -74,4 +74,5 @@
 </div>
 @section scripts{
     <script src="~/Scripts/cities.js"></script>
+    <script src="~/Scripts/jquery-paginate.min.js"></script>
 }
