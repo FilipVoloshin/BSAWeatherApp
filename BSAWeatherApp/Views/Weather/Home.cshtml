@@ -1,8 +1,15 @@
-﻿@using BSAWeatherApp.Models
-
+﻿@model IEnumerable<CityModel>
 @{
     ViewBag.Title = "Forecast";
-    var cityBind = new SelectList(Enum.GetValues(typeof(Cities)));
+    var cityBind = new List<SelectListItem>();
+    foreach (var city in Model)
+    {
+        cityBind.Add(new SelectListItem
+        {
+            Value = city.Name,
+            Text = city.Name
+        });
+    }
     var daysPeriodBind = new List<SelectListItem>
     {
         new SelectListItem{ Text = "For three days", Value = "3"},

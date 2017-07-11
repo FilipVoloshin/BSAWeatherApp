@@ -13,12 +13,12 @@
         {
             <div class="col-md-3">
                 <h2>Add city: <span class="fa fa-plus" id="addedCity"></span></h2>
-                <div class="form" id="">
+                <div class="form" id="cityNameForm">
                     @Html.Label("name", "Enter city name:")
                     @Html.TextBox("name", null, new { @class = "form-control", @required = "required" })
                 </div>
-                <div class="form" id="">
-                    @Html.Label("Description", "Add description (optional):")
+                <div class="form" id="descriptionForm">
+                    @Html.Label("description", "Add description (optional):")
                     @Html.TextArea("description", null, new { @class = "form-control", @rows = "5" })
                 </div>
                 <button type="submit" id="addCity" class="btn btn-success">

@@ -24,7 +24,8 @@ namespace BSAWeatherApp.Controllers
         // GET: Weather/Settings
         public ActionResult Home()
         {
-            return View();
+            var cities = citiesDb.GetAll();
+            return View(cities);
         }
 
         // POST : Weather/WeatherNow

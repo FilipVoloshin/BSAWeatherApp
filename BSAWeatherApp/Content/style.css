@@ -1,4 +1,4 @@
-﻿#customCityGroup, #daysCountCityGroup {
+﻿#customCityGroup, #daysCountCityGroup, #descriptionForm, #cityNameForm {
     margin-top: 10px;
 }
 
@@ -17,10 +17,6 @@
 
 #filterContainer, #forecastContainer {
     margin-top: 50px;
-}
-
-#uaFlagImg {
-    margin-left: 10px;
 }
 
 #weatherNowDiv {

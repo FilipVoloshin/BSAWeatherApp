@@ -185,7 +185,6 @@
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Services\IUrlGenerator.cs" />
     <Compile Include="Services\UrlGenerator.cs" />
-    <Compile Include="Models\Enums\Cities.cs" />
     <Compile Include="Models\WeatherForecastModel.cs" />
     <Compile Include="Models\WeatherNowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
