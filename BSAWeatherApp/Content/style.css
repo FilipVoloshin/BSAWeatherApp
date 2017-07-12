@@ -72,4 +72,8 @@
         background-color: #3d9be0;
     }
 
-/*---------- Page Navigation ----------*/
+/*---------- End Page Navigation ----------*/
+
+#historyHeader {
+    margin-bottom: 40px;
+}
