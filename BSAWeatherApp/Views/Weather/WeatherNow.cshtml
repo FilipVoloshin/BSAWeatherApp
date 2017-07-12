@@ -4,8 +4,4 @@
     var weatherDescription = Model.Weather.FirstOrDefault();
 }
 
-<div class="col-md-5" id="weatherNowDiv">
-     <i class="fa fa-2x fa-thermometer"><h5 id="watherNowName">Weather in <i>@Model.Name</i> now...</h5></i>
-    <h1 id="weatherNowTmp">@Model.Main.Temp °C</h1>
-    <h5>@weatherDescription.Main / @weatherDescription.Description</h5>
-</div>
+<i class="fa fa-thermometer"></i>&nbsp;&nbsp;&nbsp; Weather in <i>@Model.Name</i> is <b>@Model.Main.Temp °C</b>. @weatherDescription.Main / @weatherDescription.Description  <span class="fa fa-close" tooltip="Close weather" id="closeWeatherNow" style="color:red"></span>

@@ -1,9 +1,11 @@
 ﻿var firstValue = true;
 $(document).ready(function () {
-    $(".cityDropDown").select2();
+    $("#cityDropDown").select2({
+        theme: "bootstrap"
+    });
 });
 function changeSelectType() {
-    var cityDropdownVal = $("#defaultCity").val();
+    var cityDropdownVal = $("#cityDropDown").val();
     if (cityDropdownVal !== "") {
         $("#customCity").attr('disabled', true);
         $("#customCity").val("");
@@ -13,17 +15,21 @@ function changeSelectType() {
     }
 }
 
-$("#defaultCity").change(function () {
+$("#cityDropDown").change(function () {
     changeSelectType();
 });
 
-function weatherResultAppear() {
+function weatherResultAppear(data) {
 
     if (firstValue) {
         firstValue = false;
         $("#weatherResult").hide().fadeIn(2000);
     }
+    $("#weatherSmallText").show();
     $("#loadSpin").hide();
+    $("#closeWeatherNow").click(function () {
+        $("#weatherSmallText").fadeOut(1000);
+    });
 }
 function startAjax() {
     $("#loadSpin").show();

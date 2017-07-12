@@ -1,4 +1,4 @@
-﻿s<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,7 +9,7 @@
     @RenderSection("content", required: false)
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-static-top">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href=@Url.Action("Home", "Weather")>
@@ -25,9 +25,7 @@
                     Settings
                 </a>
             </div>
-            <ul class="nav navbar-nav">
-            </ul>
-            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult" , OnBegin = "startAjax()", OnSuccess = "weatherResultAppear()" },
+            @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherSmallText", OnBegin = "startAjax()", OnSuccess = "weatherResultAppear(data)" },
                 new { @class = "navbar-form navbar-right" }))
             {
                 <div class="input-group">
@@ -41,6 +39,9 @@
                     </span>
                 </div>
             }
+            <div class="navbar-text" id="weatherSmallText">
+
+            </div>
         </div>
     </nav>
     <div class="container body-content">
