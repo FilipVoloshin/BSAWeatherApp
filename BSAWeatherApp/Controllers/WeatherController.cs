@@ -38,6 +38,12 @@ namespace BSAWeatherApp.Controllers
             {
                 var url = urlGenerator.GenerateWeatherUrl(weatherCity);
                 var model = forecastProvider.GetWeatherNowObject(url);
+                citiesHistoryDb.Create(new CityHistory
+                {
+                    CityName = weatherCity,
+                    DateTimeOfSearch = DateTime.Now
+                });
+                citiesHistoryDb.Save();
                 return PartialView(model);
             }
             catch (AggregateException e)
@@ -54,6 +60,11 @@ namespace BSAWeatherApp.Controllers
             {
                 var url = urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
                 var model = forecastProvider.GetWeatherForecastObject(url);
+                citiesHistoryDb.Create(new CityHistory {
+                    CityName = model.City.Name,
+                    DateTimeOfSearch = DateTime.Now
+                });
+                citiesHistoryDb.Save();
                 return PartialView(model);
             }
             catch (AggregateException e)
