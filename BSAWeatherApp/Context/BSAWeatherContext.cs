@@ -11,5 +11,6 @@ namespace BSAWeatherApp.Context
         }
 
         public DbSet<CityModel> Cities { get; set; }
+        public DbSet<CityHistory> History { get; set; }
     }
 }
