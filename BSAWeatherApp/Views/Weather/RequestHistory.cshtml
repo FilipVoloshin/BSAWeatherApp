@@ -1,0 +1,39 @@
+﻿@model IEnumerable<HistoryViewModel>
+@{
+    ViewBag.Title = "RequestHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>
+        <i class="fa fa-2x fa-history"></i>History of user's requests (by city)
+    </h1>
+    <div class="col-lg-7">
+        <table class="table table-bordered table-hover" style="width:150%">
+            <thead>
+                <tr class="success">
+                    <td><b>City</b><br /></td>
+                    <td><b>Count of requests</b><br /></td>
+                    <td><b>Date of last search</b><br /></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cityHistory in Model)
+                {
+                    <tr>
+                        <td>
+                            @cityHistory.City
+                        </td>
+                        <td>
+                            @cityHistory.CountOfRequests
+                        </td>
+                        <td>
+                            @cityHistory.LastDateOfSearch
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

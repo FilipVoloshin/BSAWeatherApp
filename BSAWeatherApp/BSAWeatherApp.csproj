@@ -170,6 +170,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\HistoryHelper.cs" />
     <Compile Include="Migrations\201707101712391_InitialCreate.cs" />
     <Compile Include="Migrations\201707101712391_InitialCreate.Designer.cs">
       <DependentUpon>201707101712391_InitialCreate.cs</DependentUpon>
@@ -189,6 +190,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CityHistory.cs" />
     <Compile Include="Models\CityModel.cs" />
+    <Compile Include="Models\ViewModels\HistoryViewModel.cs" />
     <Compile Include="Services\IUrlGenerator.cs" />
     <Compile Include="Services\UrlGenerator.cs" />
     <Compile Include="Models\WeatherForecastModel.cs" />
@@ -263,6 +265,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Weather\WeatherNow.cshtml" />
     <Content Include="Views\Weather\Settings.cshtml" />
+    <Content Include="Views\Weather\RequestHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

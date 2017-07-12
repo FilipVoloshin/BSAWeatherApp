@@ -24,6 +24,10 @@
                     <i class="fa fa-wrench"></i>
                     Settings
                 </a>
+                <a class="navbar-brand" href=@Url.Action("RequestHistory", "Weather")>
+                    <i class="fa fa-history"></i>
+                    Search history
+                </a>
             </div>
             @using (Ajax.BeginForm("WeatherNow", "Weather", new AjaxOptions { UpdateTargetId = "weatherSmallText", OnBegin = "startAjax()", OnSuccess = "weatherResultAppear(data)" },
                 new { @class = "navbar-form navbar-right" }))

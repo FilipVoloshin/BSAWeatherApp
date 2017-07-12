@@ -1,6 +1,7 @@
 ﻿using BSAWeatherApp.DataService;
 using BSAWeatherApp.Models;
 using BSAWeatherApp.Services;
+using BSAWeatherApp.Helpers;
 using System;
 using System.Collections;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ namespace BSAWeatherApp.Controllers
         IForecastProvider forecastProvider;
         IRepository<CityModel> citiesDb;
         IRepository<CityHistory> citiesHistoryDb;
+        HistoryHelper historyHelper;
 
         public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator,
             IRepository<CityModel> citiesDb, IRepository<CityHistory> citiesHistoryDb)
@@ -21,6 +23,7 @@ namespace BSAWeatherApp.Controllers
             this.urlGenerator = urlGenerator;
             this.citiesDb = citiesDb;
             this.citiesHistoryDb = citiesHistoryDb;
+            historyHelper = new HistoryHelper();
         }
 
         // GET: Weather/Settings
@@ -119,6 +122,14 @@ namespace BSAWeatherApp.Controllers
             }
             return Json(new { Message = "Error!" });
 
+        }
+
+        //GET: Weather/RequestHistory
+        public ActionResult RequestHistory()
+        {
+            var cityHistoryModel = citiesHistoryDb.GetAll();
+            var cityHistoryViewModel = historyHelper.GetCityRequestCount(cityHistoryModel);
+            return View(cityHistoryViewModel);
         }
     }
 }
