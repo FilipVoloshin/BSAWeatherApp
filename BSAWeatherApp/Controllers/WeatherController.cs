@@ -12,13 +12,15 @@ namespace BSAWeatherApp.Controllers
         IUrlGenerator urlGenerator;
         IForecastProvider forecastProvider;
         IRepository<CityModel> citiesDb;
+        IRepository<CityHistory> citiesHistoryDb;
 
         public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator,
-            IRepository<CityModel> citiesDb)
+            IRepository<CityModel> citiesDb, IRepository<CityHistory> citiesHistoryDb)
         {
             this.forecastProvider = forecastProvider;
             this.urlGenerator = urlGenerator;
             this.citiesDb = citiesDb;
+            this.citiesHistoryDb = citiesHistoryDb;
         }
 
         // GET: Weather/Settings
