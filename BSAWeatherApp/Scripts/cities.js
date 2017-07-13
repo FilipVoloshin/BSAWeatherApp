@@ -1,18 +1,4 @@
-﻿// -----  City adding ----- //
-$(document).ready(function () {
-    $("#tableWithCity").paginate({
-        limit: 4,
-        previous: true,
-        next: true,
-        previousText: '<',
-        nextText: '>',
-        firstText: '<<',
-        lastText: '>>',
-        navigationClass: 'page-navigation',
-        navigationWrapper: null
-    });
-});
-function addRowToCityTable(id, name, description) {
+﻿function addRowToCityTable(id, name, description) {
     if (description === null) {
         description = "";
     }
