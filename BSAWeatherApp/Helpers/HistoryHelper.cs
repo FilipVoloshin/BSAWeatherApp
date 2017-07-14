@@ -12,6 +12,7 @@ namespace BSAWeatherApp.Helpers
     {
         public IEnumerable<HistoryViewModel> GetCityRequestCount(IEnumerable<CityHistory> cityHistory)
         {
+            var historyList = new List<HistoryViewModel>();
             var groupedValues = cityHistory
                 .GroupBy(c => c.CityName.ToLower(),
                 (key, values) => new
@@ -19,19 +20,16 @@ namespace BSAWeatherApp.Helpers
                     CityName = key,
                     Count = values.Count(),
                     LastDayOfSearch = values.OrderByDescending(c => c.DateTimeOfSearch).FirstOrDefault().DateTimeOfSearch
-                })
-                .AsEnumerable();
-
-            var historyList = new List<HistoryViewModel>();
-            foreach (var value in groupedValues)
+                }).ToList();
+            groupedValues.ForEach(g =>
             {
                 historyList.Add(new HistoryViewModel
                 {
-                    City = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(value.CityName),
-                    CountOfRequests = value.Count,
-                    LastDateOfSearch = value.LastDayOfSearch
+                    City = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(g.CityName),
+                    CountOfRequests = g.Count,
+                    LastDateOfSearch = g.LastDayOfSearch
                 });
-            }
+            });
             return historyList;
         }
     }
