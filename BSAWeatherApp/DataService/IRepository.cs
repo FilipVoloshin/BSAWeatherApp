@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace BSAWeatherApp.DataService
 {
-    public interface IRepository<T> : IDisposable
+    public interface IRepository<T>
         where T : class
     {
         IEnumerable<T> GetAll();
-        T GetItem(int id);
+        IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
+        T GetItem(object id);
         void Create(T item);
         void Update(T item);
         void Delete(int id);
-        void Save();
     }
 }

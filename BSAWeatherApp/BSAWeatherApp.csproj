@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -163,9 +166,10 @@
     <Compile Include="Context\BSAWeatherContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
-    <Compile Include="DataService\CitiesRepository.cs" />
-    <Compile Include="DataService\CityHistoryRepository.cs" />
     <Compile Include="DataService\IRepository.cs" />
+    <Compile Include="DataService\IUnitOfWork.cs" />
+    <Compile Include="DataService\Repository.cs" />
+    <Compile Include="DataService\UnitOfWork.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -190,7 +194,15 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CityHistory.cs" />
     <Compile Include="Models\CityModel.cs" />
-    <Compile Include="Models\ViewModels\HistoryViewModel.cs" />
+    <Compile Include="Models\DTO\CityDTO.cs" />
+    <Compile Include="Models\DTO\CityHistoryDTO.cs" />
+    <Compile Include="Models\ViewModels\CityHistoryViewModel.cs" />
+    <Compile Include="Models\ViewModels\CityStatisticViewModel.cs" />
+    <Compile Include="Models\ViewModels\CityViewModel.cs" />
+    <Compile Include="Services\CityService.cs" />
+    <Compile Include="Services\HistoryService.cs" />
+    <Compile Include="Services\ICityService.cs" />
+    <Compile Include="Services\IHistoryService.cs" />
     <Compile Include="Services\IUrlGenerator.cs" />
     <Compile Include="Services\UrlGenerator.cs" />
     <Compile Include="Models\WeatherForecastModel.cs" />
@@ -198,6 +210,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ForecastService.cs" />
     <Compile Include="Services\IForecastProvider.cs" />
+    <Compile Include="Services\ValidationException.cs" />
     <Compile Include="Util\NinjectDependencyResolver.cs" />
   </ItemGroup>
   <ItemGroup>

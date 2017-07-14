@@ -10,9 +10,9 @@ namespace BSAWeatherApp.Helpers
 {
     public class HistoryHelper
     {
-        public IEnumerable<HistoryViewModel> GetCityRequestCount(IEnumerable<CityHistory> cityHistory)
+        public IEnumerable<CityStatisticViewModel> GetCityRequestCount(IEnumerable<CityHistoryViewModel> cityHistory)
         {
-            var historyList = new List<HistoryViewModel>();
+            var statisticList = new List<CityStatisticViewModel>();
             var groupedValues = cityHistory
                 .GroupBy(c => c.CityName.ToLower(),
                 (key, values) => new
@@ -23,14 +23,14 @@ namespace BSAWeatherApp.Helpers
                 }).ToList();
             groupedValues.ForEach(g =>
             {
-                historyList.Add(new HistoryViewModel
+                statisticList.Add(new CityStatisticViewModel
                 {
                     City = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(g.CityName),
                     CountOfRequests = g.Count,
                     LastDateOfSearch = g.LastDayOfSearch
                 });
             });
-            return historyList;
+            return statisticList;
         }
     }
 }

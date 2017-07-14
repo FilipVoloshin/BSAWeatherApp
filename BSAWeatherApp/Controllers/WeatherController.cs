@@ -1,10 +1,13 @@
-﻿using BSAWeatherApp.DataService;
-using BSAWeatherApp.Models;
+﻿using BSAWeatherApp.Models;
 using BSAWeatherApp.Services;
 using BSAWeatherApp.Helpers;
 using System;
 using System.Collections;
 using System.Web.Mvc;
+using BSAWeatherApp.Models.DTO;
+using AutoMapper;
+using BSAWeatherApp.Models.ViewModels;
+using System.Collections.Generic;
 
 namespace BSAWeatherApp.Controllers
 {
@@ -12,24 +15,26 @@ namespace BSAWeatherApp.Controllers
     {
         IUrlGenerator urlGenerator;
         IForecastProvider forecastProvider;
-        IRepository<CityModel> citiesDb;
-        IRepository<CityHistory> citiesHistoryDb;
+        ICityService cityService;
+        IHistoryService historyService;
         HistoryHelper historyHelper;
 
         public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator,
-            IRepository<CityModel> citiesDb, IRepository<CityHistory> citiesHistoryDb)
+            ICityService cityService, IHistoryService historyService)
         {
             this.forecastProvider = forecastProvider;
             this.urlGenerator = urlGenerator;
-            this.citiesDb = citiesDb;
-            this.citiesHistoryDb = citiesHistoryDb;
+            this.cityService = cityService;
+            this.historyService = historyService;
             historyHelper = new HistoryHelper();
         }
 
         // GET: Weather/Settings
         public ActionResult Home()
         {
-            var cities = citiesDb.GetAll();
+            var citiesDtos = cityService.GetAllCities();
+            Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityViewModel>());
+            var cities = Mapper.Map<IEnumerable<CityDTO>, IEnumerable<CityViewModel>>(citiesDtos);
             return View(cities);
         }
 
@@ -41,12 +46,11 @@ namespace BSAWeatherApp.Controllers
             {
                 var url = urlGenerator.GenerateWeatherUrl(weatherCity);
                 var model = forecastProvider.GetWeatherNowObject(url);
-                citiesHistoryDb.Create(new CityHistory
+                historyService.AddHistory(new CityHistoryDTO
                 {
                     CityName = weatherCity,
                     DateTimeOfSearch = DateTime.Now
                 });
-                citiesHistoryDb.Save();
                 return PartialView(model);
             }
             catch (AggregateException e)
@@ -63,11 +67,11 @@ namespace BSAWeatherApp.Controllers
             {
                 var url = urlGenerator.GenerateForecastUrl(defaultCity, customCity, daysCount);
                 var model = forecastProvider.GetWeatherForecastObject(url);
-                citiesHistoryDb.Create(new CityHistory {
+                historyService.AddHistory(new CityHistoryDTO
+                {
                     CityName = model.City.Name,
                     DateTimeOfSearch = DateTime.Now
                 });
-                citiesHistoryDb.Save();
                 return PartialView(model);
             }
             catch (AggregateException e)
@@ -79,18 +83,21 @@ namespace BSAWeatherApp.Controllers
         //GET: Weather/Settings
         public ActionResult Settings()
         {
-            var data = citiesDb.GetAll();
-            return View(data);
+            var citiesDtos = cityService.GetAllCities();
+            Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityViewModel>());
+            var cities = Mapper.Map<IEnumerable<CityDTO>, IEnumerable<CityViewModel>>(citiesDtos);
+            return View(cities);
         }
 
         //POST: Weather/AddCity
         [HttpPost]
-        public ActionResult AddCity(CityModel city)
+        public ActionResult AddCity(CityViewModel city)
         {
             if (city != null)
             {
-                citiesDb.Create(city);
-                citiesDb.Save();
+                Mapper.Initialize(cfg => cfg.CreateMap<CityViewModel, CityDTO>());
+                var cityDto = Mapper.Map<CityViewModel, CityDTO>(city);
+                cityService.CreateCity(cityDto);
                 return Json(new { Success = true, City = city });
             }
             return Json(new { Success = false });
@@ -102,8 +109,7 @@ namespace BSAWeatherApp.Controllers
         {
             if (id != 0)
             {
-                citiesDb.Delete(id);
-                citiesDb.Save();
+                cityService.DeleteCity(id);
                 return Json(new { Message = "Deleted!" });
             }
             return Json(new { Message = "Error!" });
@@ -112,13 +118,14 @@ namespace BSAWeatherApp.Controllers
 
         //POST: Weather/UpdateCity
         [HttpPost]
-        public ActionResult UpdateCity(CityModel city)
+        public ActionResult UpdateCity(CityViewModel city)
         {
             if (city != null)
             {
-                citiesDb.Update(city);
-                citiesDb.Save();
-                return Json(new { Message = "Deleted!" });
+                Mapper.Initialize(cfg => cfg.CreateMap<CityViewModel, CityDTO>());
+                var cityDto = Mapper.Map<CityViewModel, CityDTO>(city);
+                cityService.UpdateCity(cityDto);
+                return Json(new { Message = "Updated!" });
             }
             return Json(new { Message = "Error!" });
 
@@ -127,9 +134,11 @@ namespace BSAWeatherApp.Controllers
         //GET: Weather/RequestHistory
         public ActionResult RequestHistory()
         {
-            var cityHistoryModel = citiesHistoryDb.GetAll();
-            var cityHistoryViewModel = historyHelper.GetCityRequestCount(cityHistoryModel);
-            return View(cityHistoryViewModel);
+            var historyDto = historyService.GetAllHistoryEntries();
+            Mapper.Initialize(cfg => cfg.CreateMap<CityHistoryDTO, CityHistoryViewModel>());
+            var history = historyHelper.GetCityRequestCount(
+                Mapper.Map<IEnumerable<CityHistoryDTO>,IEnumerable<CityHistoryViewModel>>(historyDto));
+            return View(history);
         }
     }
 }

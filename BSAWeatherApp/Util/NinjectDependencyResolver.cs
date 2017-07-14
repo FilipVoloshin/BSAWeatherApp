@@ -29,8 +29,9 @@ namespace BSAWeatherApp.Util
         {
             kernel.Bind<IForecastProvider>().To<ForecastProvider>();
             kernel.Bind<IUrlGenerator>().To<UrlGenerator>();
-            kernel.Bind<IRepository<CityModel>>().To<CitiesRepository>();
-            kernel.Bind<IRepository<CityHistory>>().To<CityHistoryRepository>();
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+            kernel.Bind<ICityService>().To<CityService>();
+            kernel.Bind<IHistoryService>().To<HistoryService>();
         }
     }
 }

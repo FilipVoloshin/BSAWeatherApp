@@ -2,7 +2,7 @@
 
 namespace BSAWeatherApp.Models.ViewModels
 {
-    public class HistoryViewModel
+    public class CityStatisticViewModel
     {
         public string City { get; set; }
         public int CountOfRequests { get; set; }
