@@ -17,16 +17,16 @@ namespace BSAWeatherApp.Controllers
         IForecastProvider forecastProvider;
         ICityService cityService;
         IHistoryService historyService;
-        HistoryHelper historyHelper;
+        IHistoryHelper historyHelper;
 
         public WeatherController(IForecastProvider forecastProvider, IUrlGenerator urlGenerator,
-            ICityService cityService, IHistoryService historyService)
+            ICityService cityService, IHistoryService historyService, IHistoryHelper historyHelper)
         {
             this.forecastProvider = forecastProvider;
             this.urlGenerator = urlGenerator;
             this.cityService = cityService;
             this.historyService = historyService;
-            historyHelper = new HistoryHelper();
+            this.historyHelper = historyHelper;
         }
 
         // GET: Weather/Settings

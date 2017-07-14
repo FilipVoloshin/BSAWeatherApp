@@ -5,6 +5,7 @@ using Ninject;
 using BSAWeatherApp.Services;
 using BSAWeatherApp.DataService;
 using BSAWeatherApp.Models;
+using BSAWeatherApp.Helpers;
 
 namespace BSAWeatherApp.Util
 {
@@ -32,6 +33,7 @@ namespace BSAWeatherApp.Util
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<ICityService>().To<CityService>();
             kernel.Bind<IHistoryService>().To<HistoryService>();
+            kernel.Bind<IHistoryHelper>().To<HistoryHelper>();
         }
     }
 }

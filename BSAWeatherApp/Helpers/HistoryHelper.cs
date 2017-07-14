@@ -1,14 +1,11 @@
-﻿using BSAWeatherApp.Models;
-using BSAWeatherApp.Models.ViewModels;
-using System;
+﻿using BSAWeatherApp.Models.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Globalization;
 
 namespace BSAWeatherApp.Helpers
 {
-    public class HistoryHelper
+    public class HistoryHelper : IHistoryHelper
     {
         public IEnumerable<CityStatisticViewModel> GetCityRequestCount(IEnumerable<CityHistoryViewModel> cityHistory)
         {
