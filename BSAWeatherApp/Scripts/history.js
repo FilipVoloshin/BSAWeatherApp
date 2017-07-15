@@ -1,3 +1,5 @@
 ﻿$(document).ready(function () {
-    $("#historyTable").DataTable();
+    $("#historyTable").DataTable({
+        "order": [[1,'descz']]
+    });
 });
