@@ -13,6 +13,7 @@ namespace BSAWeatherApp.Services
         void UpdateCity(CityDTO city);
         CityDTO GetCity(int id);
         IEnumerable<CityDTO> GetAllCities();
+        int GetIdOfLastAddedCity();
         void Dispose();
     }
 }

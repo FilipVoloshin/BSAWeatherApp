@@ -99,11 +99,7 @@ namespace BSAWeatherApp.Controllers
                 Mapper.Initialize(cfg => cfg.CreateMap<CityViewModel, CityDTO>());
                 var cityDto = Mapper.Map<CityViewModel, CityDTO>(city);
                 cityService.CreateCity(cityDto);
-                var citiesDtos = cityService.GetAllCities();
-                Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityViewModel>());
-                var lastAddedCityId = Mapper.Map<IEnumerable<CityDTO>, IEnumerable<CityViewModel>>(citiesDtos)
-                    .ToList().OrderByDescending(c => c.Id).FirstOrDefault().Id;
-                city.Id = lastAddedCityId;
+                city.Id = cityService.GetIdOfLastAddedCity();
                 return Json(new { Success = true, City = city });
             }
             return Json(new { Success = false });

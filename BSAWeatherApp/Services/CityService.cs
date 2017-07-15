@@ -52,6 +52,11 @@ namespace BSAWeatherApp.Services
             Database.Save();
         }
 
+        public int GetIdOfLastAddedCity()
+        {
+            return GetAllCities().ToList().OrderByDescending(c => c.Id).FirstOrDefault().Id;
+        }
+
         public void Dispose()
         {
             Database.Dispose();

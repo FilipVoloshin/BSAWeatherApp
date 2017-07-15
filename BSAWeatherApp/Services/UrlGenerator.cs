@@ -40,7 +40,7 @@ namespace BSAWeatherApp.Services
 
         public string GenerateWeatherUrl(string city)
         {
-            return $"{BaseUrl}/weather?q={city}&appid={ApiKey}&units=metric";
+            return $"{BaseUrl}/weather?q={city}&APPID={ApiKey}&units=metric";
         }
     }
 }
