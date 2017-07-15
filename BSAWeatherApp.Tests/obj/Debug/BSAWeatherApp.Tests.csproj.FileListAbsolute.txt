@@ -41,3 +41,6 @@ C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\obj\Debug\BSAWeatherApp.Tes
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\FakeItEasy.dll
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\FakeItEasy.pdb
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\FakeItEasy.xml
+C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\Castle.Core.dll
+C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\Moq.dll
+C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\Moq.xml

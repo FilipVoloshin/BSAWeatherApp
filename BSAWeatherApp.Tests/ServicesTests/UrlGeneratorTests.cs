@@ -17,6 +17,7 @@ namespace BSAWeatherApp.Tests.ServicesTests
             //Assert
             Assert.That(actualUrl, Is.EqualTo(url));
         }
+
         [Test]
         public void Generator_Check_For_Correct_Generating_Url_String_For_Daily_Weather()
         {

@@ -125,18 +125,6 @@
             </summary>
             <param name="m">The modules to load.</param>
         </member>
-        <member name="M:Ninject.IKernelConfiguration.Load(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Loads modules from the files that match the specified pattern(s).
-            </summary>
-            <param name="filePatterns">The file patterns (i.e. "*.dll", "modules/*.rb") to match.</param>
-        </member>
-        <member name="M:Ninject.IKernelConfiguration.Load(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
-            <summary>
-            Loads modules defined in the specified assemblies.
-            </summary>
-            <param name="assemblies">The assemblies to search.</param>
-        </member>
         <member name="M:Ninject.IKernelConfiguration.Unload(System.String)">
             <summary>
             Unloads the plugin with the specified name.
@@ -174,16 +162,6 @@
         <member name="P:Ninject.INinjectSettings.DefaultScopeCallback">
             <summary>
             Gets the default scope callback.
-            </summary>
-        </member>
-        <member name="P:Ninject.INinjectSettings.LoadExtensions">
-            <summary>
-            Gets a value indicating whether the kernel should automatically load extensions at startup.
-            </summary>
-        </member>
-        <member name="P:Ninject.INinjectSettings.ExtensionSearchPatterns">
-            <summary>
-            Gets the paths that should be searched for extensions.
             </summary>
         </member>
         <member name="P:Ninject.INinjectSettings.UseReflectionBasedInjection">
@@ -360,15 +338,15 @@
         </member>
         <member name="M:Ninject.KernelBase.Load(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            Loads modules from the files that match the specified pattern(s).
+            Does nothing on this framework
             </summary>
             <param name="filePatterns">The file patterns (i.e. "*.dll", "modules/*.rb") to match.</param>
         </member>
         <member name="M:Ninject.KernelBase.Load(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
             <summary>
-            Loads modules defined in the specified assemblies.
+            Does nothing on this framework
             </summary>
-            <param name="assemblies">The assemblies to search.</param>
+            <param name="assembly">The assemblies to search.</param>
         </member>
         <member name="M:Ninject.KernelBase.Unload(System.String)">
             <summary>
@@ -493,12 +471,6 @@
             <inheritdoc />
         </member>
         <member name="M:Ninject.KernelConfiguration.Load(System.Collections.Generic.IEnumerable{Ninject.Modules.INinjectModule})">
-            <inheritdoc />
-        </member>
-        <member name="M:Ninject.KernelConfiguration.Load(System.Collections.Generic.IEnumerable{System.String})">
-            <inheritdoc />
-        </member>
-        <member name="M:Ninject.KernelConfiguration.Load(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
             <inheritdoc />
         </member>
         <member name="M:Ninject.KernelConfiguration.Unload(System.String)">
@@ -2289,11 +2261,6 @@
             Gets the callback for singleton scope.
             </summary>
         </member>
-        <member name="F:Ninject.Infrastructure.StandardScopeCallbacks.Thread">
-            <summary>
-            Gets the callback for thread scope.
-            </summary>
-        </member>
         <member name="T:Ninject.Infrastructure.Disposal.DisposableObject">
             <summary>
             An object that notifies when it is disposed.
@@ -2509,43 +2476,24 @@
             <param name="type">The type to be formatted.</param>
             <returns>The type formatted as string.</returns>
         </member>
-        <member name="T:Ninject.Infrastructure.Language.ExtensionsForAssembly">
-            <summary>
-            Provides extension methods for <see cref="T:System.Reflection.Assembly"/>.
-            </summary>
-        </member>
-        <member name="M:Ninject.Infrastructure.Language.ExtensionsForAssembly.HasNinjectModules(System.Reflection.Assembly)">
-            <summary>
-            Determines whether the assembly has loadable <see cref="T:Ninject.Modules.INinjectModule"/>.
-            </summary>
-            <param name="assembly">The <see cref="T:System.Reflection.Assembly"/>.</param>
-            <returns><c>True</c> if there's any loadable <see cref="T:Ninject.Modules.INinjectModule"/>, otherwise <c>False</c>.</returns>
-        </member>
-        <member name="M:Ninject.Infrastructure.Language.ExtensionsForAssembly.GetNinjectModules(System.Reflection.Assembly)">
-            <summary>
-            Gets loadable <see cref="T:Ninject.Modules.INinjectModule"/>s from the <see cref="T:System.Reflection.Assembly"/>.
-            </summary>
-            <param name="assembly">The <see cref="T:System.Reflection.Assembly"/>.</param>
-            <returns>The loadable <see cref="T:Ninject.Modules.INinjectModule"/>s</returns>
-        </member>
         <member name="T:Ninject.Infrastructure.Language.ExtensionsForICustomAttributeProvider">
             <summary>
-            Provides extension methods for <see cref="T:System.Reflection.ICustomAttributeProvider"/>.
+            Provides extension methods for <see cref="T:System.Object"/> that is <see cref="T:System.Reflection.MemberInfo"/> or <see cref="T:System.Reflection.ParameterInfo"/>.
             </summary>
         </member>
-        <member name="M:Ninject.Infrastructure.Language.ExtensionsForICustomAttributeProvider.HasAttribute(System.Reflection.ICustomAttributeProvider,System.Type)">
+        <member name="M:Ninject.Infrastructure.Language.ExtensionsForICustomAttributeProvider.HasAttribute(System.Object,System.Type)">
             <summary>
-            Determines if the <see cref="T:System.Reflection.ICustomAttributeProvider"/> has the specified attribute.
+            Determines if the target has the specified attribute.
             </summary>
-            <param name="member">The <see cref="T:System.Reflection.ICustomAttributeProvider"/>.</param>
+            <param name="target">The <see cref="T:System.Object"/> that is <see cref="T:System.Reflection.MemberInfo"/> or <see cref="T:System.Reflection.ParameterInfo"/>.</param>
             <param name="type">The attribute type.</param>
-            <returns><c>True</c> if the <see cref="T:System.Reflection.ICustomAttributeProvider"/> has the attribute, otherwise <c>False</c>.</returns>
+            <returns><c>True</c> if the target has the attribute, otherwise <c>False</c>.</returns>
         </member>
-        <member name="M:Ninject.Infrastructure.Language.ExtensionsForICustomAttributeProvider.GetCustomAttributesExtended(System.Reflection.ICustomAttributeProvider,System.Type,System.Boolean)">
+        <member name="M:Ninject.Infrastructure.Language.ExtensionsForICustomAttributeProvider.GetCustomAttributesExtended(System.Object,System.Type,System.Boolean)">
             <summary>
             Gets custom attributes which supports <see cref="T:System.Reflection.MemberInfo"/> and <see cref="T:System.Reflection.PropertyInfo"/>.
             </summary>
-            <param name="member">The <see cref="T:System.Reflection.ICustomAttributeProvider"/>.</param>
+            <param name="target">The <see cref="T:System.Object"/> that is <see cref="T:System.Reflection.MemberInfo"/> or <see cref="T:System.Reflection.ParameterInfo"/>.</param>
             <param name="attributeType">The attribute type.</param>
             <param name="inherit">When true, look up the hierarchy chain for the inherited custom attribute.</param>
             <returns>The attributes.</returns>
@@ -2797,76 +2745,6 @@
             <param name="method">The method.</param>
             <returns>The created injector.</returns>
         </member>
-        <member name="T:Ninject.Modules.AssemblyNameRetriever">
-            <summary>
-            Retrieves assembly names from file names using a temporary app domain.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.AssemblyNameRetriever.GetAssemblyNames(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
-            <summary>
-            Gets all assembly names of the assemblies in the given files that match the filter.
-            </summary>
-            <param name="filenames">The filenames.</param>
-            <param name="filter">The filter.</param>
-            <returns>All assembly names of the assemblies in the given files that match the filter.</returns>
-        </member>
-        <member name="M:Ninject.Modules.AssemblyNameRetriever.CreateTemporaryAppDomain">
-            <summary>
-            Creates a temporary app domain.
-            </summary>
-            <returns>The created app domain.</returns>
-        </member>
-        <member name="T:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker">
-            <summary>
-            This class is loaded into the temporary appdomain to load and check if the assemblies match the filter.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.AssemblyNameRetriever.AssemblyChecker.GetAssemblyNames(System.Collections.Generic.IEnumerable{System.String},System.Predicate{System.Reflection.Assembly})">
-            <summary>
-            Gets the assembly names of the assemblies matching the filter.
-            </summary>
-            <param name="filenames">The filenames.</param>
-            <param name="filter">The filter.</param>
-            <returns>All assembly names of the assemblies matching the filter.</returns>
-        </member>
-        <member name="T:Ninject.Modules.CompiledModuleLoaderPlugin">
-            <summary>
-            Loads modules from compiled assemblies.
-            </summary>
-        </member>
-        <member name="F:Ninject.Modules.CompiledModuleLoaderPlugin.Extensions">
-            <summary>
-            The file extensions that are supported.
-            </summary>
-        </member>
-        <member name="F:Ninject.Modules.CompiledModuleLoaderPlugin.assemblyNameRetriever">
-            <summary>
-            The assembly name retriever.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.CompiledModuleLoaderPlugin.#ctor(Ninject.IKernelConfiguration,Ninject.Modules.IAssemblyNameRetriever)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ninject.Modules.CompiledModuleLoaderPlugin"/> class.
-            </summary>
-            <param name="kernelConfiguration">The kernel configuration into which modules will be loaded.</param>
-            <param name="assemblyNameRetriever">The assembly name retriever.</param>
-        </member>
-        <member name="P:Ninject.Modules.CompiledModuleLoaderPlugin.KernelConfiguration">
-            <summary>
-            Gets the kernel configuration into which modules will be loaded.
-            </summary>
-        </member>
-        <member name="P:Ninject.Modules.CompiledModuleLoaderPlugin.SupportedExtensions">
-            <summary>
-            Gets the file extensions that the plugin understands how to load.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.CompiledModuleLoaderPlugin.LoadModules(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Loads modules from the specified files.
-            </summary>
-            <param name="filenames">The names of the files to load modules from.</param>
-        </member>
         <member name="T:Ninject.Modules.IAssemblyNameRetriever">
             <summary>
             Retrieves assembly names from file names using a temporary app domain.
@@ -2939,28 +2817,6 @@
             <summary>
             Called after loading the modules. A module can verify here if all other required modules are loaded.
             </summary>
-        </member>
-        <member name="T:Ninject.Modules.ModuleLoader">
-            <summary>
-            Automatically finds and loads modules from assemblies.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.ModuleLoader.#ctor(Ninject.IKernelConfiguration)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Ninject.Modules.ModuleLoader"/> class.
-            </summary>
-            <param name="kernelConfiguration">The kernel configuration into which modules will be loaded.</param>
-        </member>
-        <member name="P:Ninject.Modules.ModuleLoader.KernelConfiguration">
-            <summary>
-            Gets the kernel into which modules will be loaded.
-            </summary>
-        </member>
-        <member name="M:Ninject.Modules.ModuleLoader.LoadModules(System.Collections.Generic.IEnumerable{System.String})">
-            <summary>
-            Loads any modules found in the files that match the specified patterns.
-            </summary>
-            <param name="patterns">The patterns to search.</param>
         </member>
         <member name="T:Ninject.Modules.NinjectModule">
             <summary>
@@ -4406,12 +4262,6 @@
             </summary>
             <returns>The fluent syntax.</returns>
         </member>
-        <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.InThreadScope">
-            <summary>
-            Indicates that instances activated via the binding should be re-used within the same thread.
-            </summary>
-            <returns>The fluent syntax.</returns>
-        </member>
         <member name="M:Ninject.Planning.Bindings.BindingConfigurationBuilder`1.InScope(System.Func{Ninject.Activation.IContext,System.Object})">
             <summary>
             Indicates that instances activated via the binding should be re-used as long as the object
@@ -5147,6 +4997,15 @@
             <param name="parent">The parent context.</param>
             <returns>The resolved value.</returns>
         </member>
+        <member name="M:Ninject.Planning.Targets.ITarget.HasAttribute(System.Type)">
+            <summary>
+            Determines if the target has the specified attribute.
+            </summary>
+            <param name="attributeType">The type of attribute</param>
+            <returns>
+                <c>true</c> if the specified member has attribute; otherwise, <c>false</c>.
+            </returns>
+        </member>
         <member name="T:Ninject.Planning.Targets.ParameterTarget">
             <summary>
             Represents an injection target for a <see cref="T:System.Reflection.ParameterInfo"/>.
@@ -5255,28 +5114,14 @@
             </summary>
             <exception cref="T:System.InvalidOperationException">If the item does not have a default value.</exception>
         </member>
-        <member name="M:Ninject.Planning.Targets.Target`1.GetCustomAttributes(System.Type,System.Boolean)">
+        <member name="M:Ninject.Planning.Targets.Target`1.HasAttribute(System.Type)">
             <summary>
-            Returns an array of custom attributes of a specified type defined on the target.
+            Determines if the target has the specified attribute.
             </summary>
-            <param name="attributeType">The type of attribute to search for.</param>
-            <param name="inherit">Whether to look up the hierarchy chain for inherited custom attributes.</param>
-            <returns>An array of custom attributes of the specified type.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Targets.Target`1.GetCustomAttributes(System.Boolean)">
-            <summary>
-            Returns an array of custom attributes defined on the target.
-            </summary>
-            <param name="inherit">Whether to look up the hierarchy chain for inherited custom attributes.</param>
-            <returns>An array of custom attributes.</returns>
-        </member>
-        <member name="M:Ninject.Planning.Targets.Target`1.IsDefined(System.Type,System.Boolean)">
-            <summary>
-            Returns a value indicating whether an attribute of the specified type is defined on the target.
-            </summary>
-            <param name="attributeType">The type of attribute to search for.</param>
-            <param name="inherit">Whether to look up the hierarchy chain for inherited custom attributes.</param>
-            <returns><c>True</c> if such an attribute is defined; otherwise <c>false</c>.</returns>
+            <param name="attributeType">The type of attribute</param>
+            <returns>
+                <c>true</c> if the specified member has attribute; otherwise, <c>false</c>.
+            </returns>
         </member>
         <member name="M:Ninject.Planning.Targets.Target`1.ResolveWithin(Ninject.Activation.IContext)">
             <summary>
@@ -5633,12 +5478,6 @@
             <summary>
             Indicates that instances activated via the binding should not be re-used, nor have
             their lifecycle managed by Ninject.
-            </summary>
-            <returns>The fluent syntax.</returns>
-        </member>
-        <member name="M:Ninject.Syntax.IBindingInSyntax`1.InThreadScope">
-            <summary>
-            Indicates that instances activated via the binding should be re-used within the same thread.
             </summary>
             <returns>The fluent syntax.</returns>
         </member>
@@ -6584,20 +6423,6 @@
             </summary>
             <param name="kernelConfiguration">The kernel configuration.</param>
             <param name="modules">The modules to load into which the modules are loaded.</param>
-        </member>
-        <member name="M:Ninject.ModuleLoadExtensions.Load(Ninject.IKernelConfiguration,System.String[])">
-            <summary>
-            Loads modules from the files that match the specified pattern(s).
-            </summary>
-            <param name="kernelConfiguration">The kernel configuration into which the files are loaded.</param>
-            <param name="filePatterns">The file patterns (i.e. "*.dll", "modules/*.rb") to match.</param>
-        </member>
-        <member name="M:Ninject.ModuleLoadExtensions.Load(Ninject.IKernelConfiguration,System.Reflection.Assembly[])">
-            <summary>
-            Loads modules defined in the specified assemblies.
-            </summary>
-            <param name="kernelConfiguration">The kernel configuration into which the assemblies are loaded.</param>
-            <param name="assemblies">The assemblies to search.</param>
         </member>
         <member name="T:Ninject.ResolutionExtensions">
             <summary>
