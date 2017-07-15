@@ -11,7 +11,7 @@ namespace BSAWeatherApp.Services
         void CreateCity(CityDTO city);
         void DeleteCity(int id);
         void UpdateCity(CityDTO city);
-        CityDTO GetCity(object id);
+        CityDTO GetCity(int id);
         IEnumerable<CityDTO> GetAllCities();
         void Dispose();
     }

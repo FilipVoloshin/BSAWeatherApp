@@ -39,7 +39,7 @@ namespace BSAWeatherApp.Services
             return Mapper.Map<IEnumerable<CityModel>, List<CityDTO>>(Database.Repository<CityModel>().GetAll());
         }
 
-        public CityDTO GetCity(object id)
+        public CityDTO GetCity(int id)
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityModel, CityDTO>());
             return Mapper.Map<CityModel, CityDTO>(Database.Repository<CityModel>().GetItem(id));

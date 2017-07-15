@@ -1,9 +1,6 @@
 ﻿using BSAWeatherApp.Services;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace BSAWeatherApp.DataService
 {
@@ -28,12 +25,7 @@ namespace BSAWeatherApp.DataService
             return DbSet;
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            return DbSet.Where(predicate);
-        }
-
-        public T GetItem(object id)
+        public T GetItem(int id)
         {
             return DbSet.Find(id);
         }
