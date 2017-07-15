@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 namespace BSAWeatherApp.DataService
 {
     public class Repository<T> : IRepository<T>
-        where T : class
+        where T : class, IEntity
     {
         protected DbContext DbContext { get; set; }
         protected DbSet<T> DbSet { get; set; }
@@ -21,7 +21,6 @@ namespace BSAWeatherApp.DataService
                 DbContext = dbContext;
                 DbSet = DbContext.Set<T>();
             }
-            
         }
 
         public IEnumerable<T> GetAll()

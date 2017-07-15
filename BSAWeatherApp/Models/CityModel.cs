@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using BSAWeatherApp.DataService;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BSAWeatherApp.Models
 {
     [Table("Cities")]
-    public class CityModel
+    public class CityModel : IEntity
     {
         [Key]
         public int Id { get; set; }

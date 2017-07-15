@@ -16,14 +16,14 @@ namespace BSAWeatherApp.Services
         public void AddHistory(CityHistoryDTO history)
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityHistoryDTO, CityHistory>());
-            DataBase.History.Create(Mapper.Map<CityHistoryDTO,CityHistory>(history));
+            DataBase.Repository<CityHistory>().Create(Mapper.Map<CityHistoryDTO,CityHistory>(history));
             DataBase.Save();
         }
 
         public IEnumerable<CityHistoryDTO> GetAllHistoryEntries()
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityHistory, CityHistoryDTO>());
-            return Mapper.Map<IEnumerable<CityHistory>,List<CityHistoryDTO>>(DataBase.History.GetAll());
+            return Mapper.Map<IEnumerable<CityHistory>,List<CityHistoryDTO>>(DataBase.Repository<CityHistory>().GetAll());
         }
 
         public void Dispose()

@@ -6,6 +6,8 @@ using BSAWeatherApp.Models.DTO;
 using BSAWeatherApp.DataService;
 using BSAWeatherApp.Models;
 using AutoMapper;
+using System.Linq.Expressions;
+using BSAWeatherApp.Models.ViewModels;
 
 namespace BSAWeatherApp.Services
 {
@@ -21,32 +23,32 @@ namespace BSAWeatherApp.Services
             if (city == null)
                 throw new ValidationException("City was't foud!","");
             Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityModel>());
-            Database.Cities.Create(Mapper.Map<CityDTO, CityModel>(city));
+            Database.Repository<CityModel>().Create(Mapper.Map<CityDTO, CityModel>(city));
             Database.Save();
         }
 
         public void DeleteCity(int id)
         {
-            Database.Cities.Delete(id);
+            Database.Repository<CityModel>().Delete(id);
             Database.Save();
         }
 
         public IEnumerable<CityDTO> GetAllCities()
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityModel, CityDTO>());
-            return Mapper.Map<IEnumerable<CityModel>, List<CityDTO>>(Database.Cities.GetAll());
+            return Mapper.Map<IEnumerable<CityModel>, List<CityDTO>>(Database.Repository<CityModel>().GetAll());
         }
 
         public CityDTO GetCity(object id)
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityModel, CityDTO>());
-            return Mapper.Map<CityModel, CityDTO>(Database.Cities.GetItem(id));
+            return Mapper.Map<CityModel, CityDTO>(Database.Repository<CityModel>().GetItem(id));
         }
 
         public void UpdateCity(CityDTO city)
         {
             Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityModel>());
-            Database.Cities.Update(Mapper.Map<CityDTO, CityModel>(city));
+            Database.Repository<CityModel>().Update(Mapper.Map<CityDTO, CityModel>(city));
             Database.Save();
         }
 

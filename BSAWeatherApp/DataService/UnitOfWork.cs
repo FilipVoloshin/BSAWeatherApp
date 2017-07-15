@@ -9,14 +9,15 @@ namespace BSAWeatherApp.DataService
     public class UnitOfWork : IUnitOfWork
     {
         private BSAWeatherContext DbContext { get; set; }
-
-        public IRepository<CityModel> Cities { get { return new Repository<CityModel>(DbContext); } }
-
-        public IRepository<CityHistory> History { get { return new Repository<CityHistory>(DbContext); } }
-
+        
         public UnitOfWork()
         {
             CreateDbContext();
+        }
+
+        public IRepository<T> Repository<T>() where T: class, IEntity
+        {
+            return new Repository<T>(DbContext);
         }
 
         private void CreateDbContext()

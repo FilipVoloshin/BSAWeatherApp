@@ -166,10 +166,13 @@
     <Compile Include="Context\BSAWeatherContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
+    <Compile Include="DataService\IEntity.cs" />
     <Compile Include="DataService\IRepository.cs" />
     <Compile Include="DataService\IUnitOfWork.cs" />
+    <Compile Include="DataService\IUnitOfWorkFactory.cs" />
     <Compile Include="DataService\Repository.cs" />
     <Compile Include="DataService\UnitOfWork.cs" />
+    <Compile Include="DataService\UnitOfWorkFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

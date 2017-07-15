@@ -1,5 +1,8 @@
 ﻿using BSAWeatherApp.Models.DTO;
+using BSAWeatherApp.Models.ViewModels;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
 namespace BSAWeatherApp.Services
 {

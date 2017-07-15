@@ -6,7 +6,6 @@ namespace BSAWeatherApp.DataService
     {
         void Save();
         void Dispose();
-        IRepository<CityModel> Cities { get; }
-        IRepository<CityHistory> History { get; }
+        IRepository<T> Repository<T>() where T : class, IEntity;
     }
 }

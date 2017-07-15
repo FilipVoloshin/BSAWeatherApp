@@ -4,8 +4,7 @@ using System.Linq.Expressions;
 
 namespace BSAWeatherApp.DataService
 {
-    public interface IRepository<T>
-        where T : class
+    public interface IRepository<T> where T : class, IEntity
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
