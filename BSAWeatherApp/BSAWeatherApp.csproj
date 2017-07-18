@@ -168,10 +168,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\Cities.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\BSAWeatherContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
@@ -302,7 +304,6 @@
     <Content Include="Views\Weather\RequestHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="API\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
