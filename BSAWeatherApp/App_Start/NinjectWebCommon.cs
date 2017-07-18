@@ -10,6 +10,8 @@ namespace BSAWeatherApp.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using Ninject.Web.WebApi;
+    using System.Web.Http;
     using System.Web.Mvc;
 
     public static class NinjectWebCommon 
@@ -47,6 +49,7 @@ namespace BSAWeatherApp.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch

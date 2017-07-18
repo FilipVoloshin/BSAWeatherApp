@@ -76,3 +76,5 @@ C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\System.Web.Http.x
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\System.Net.Http.Formatting.xml
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\System.Web.Http.WebHost.dll
 C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\System.Web.Http.WebHost.xml
+C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\Ninject.Web.WebApi.dll
+C:\binary_git_root\BSAWeatherApp\BSAWeatherApp.Tests\bin\Debug\Ninject.Web.WebApi.xml
