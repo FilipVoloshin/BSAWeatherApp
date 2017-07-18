@@ -21,7 +21,7 @@ namespace BSAWeatherApp.API
         }
 
 
-        // GET api/cities
+        // GET: api/cities
         public IEnumerable<CityViewModel> Get()
         {
             var citiesDTO = cityService.GetAllCities();
@@ -29,7 +29,18 @@ namespace BSAWeatherApp.API
             return Mapper.Map<IEnumerable<CityDTO>, IEnumerable<CityViewModel>>(citiesDTO);
         }
 
-        // POST api/cities/
+        //GET: api/cities/{id}
+        public IHttpActionResult Get(int id)
+        {
+            var city = cityService.GetCity(id);
+            if (city == null)
+                return NotFound();
+            Mapper.Initialize(cfg => cfg.CreateMap<CityDTO, CityViewModel>());
+            return Ok(Mapper.Map<CityDTO, CityViewModel>(city));
+
+        }
+
+        // POST: api/cities/
         public IHttpActionResult Post([FromBody]CityViewModel city)
         {
             if (city != null)
@@ -42,7 +53,15 @@ namespace BSAWeatherApp.API
                 return NotFound();
         }
 
-        // DELETE api/cities/5
+        // PUT: api/cities/{id}
+        public IHttpActionResult Put([FromBody]CityViewModel city)
+        {
+            Mapper.Initialize(cfg => cfg.CreateMap<CityViewModel, CityDTO>());
+            cityService.UpdateCity(Mapper.Map<CityViewModel, CityDTO>(city));
+            return Ok();
+        }
+
+        // DELETE: api/cities/{id}
         public IHttpActionResult Delete(int id)
         {
             var cityDto = cityService.GetCity(id);
@@ -50,7 +69,6 @@ namespace BSAWeatherApp.API
             {
                 cityService.DeleteCity(id);
                 return Ok();
-
             }
             else
                 return NotFound();
