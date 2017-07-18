@@ -29,25 +29,31 @@ namespace BSAWeatherApp.API
             return Mapper.Map<IEnumerable<CityDTO>, IEnumerable<CityViewModel>>(citiesDTO);
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // POST api/cities/
+        public IHttpActionResult Post([FromBody]CityViewModel city)
         {
-            return "value";
+            if (city != null)
+            {
+                Mapper.Initialize(cfg => cfg.CreateMap<CityViewModel, CityDTO>());
+                cityService.CreateCity(Mapper.Map<CityViewModel, CityDTO>(city));
+                return Ok();
+            }
+            else
+                return NotFound();
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // DELETE api/cities/5
+        public IHttpActionResult Delete(int id)
         {
-        }
+            var cityDto = cityService.GetCity(id);
+            if (cityDto != null)
+            {
+                cityService.DeleteCity(id);
+                return Ok();
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
+            }
+            else
+                return NotFound();
         }
     }
 }
