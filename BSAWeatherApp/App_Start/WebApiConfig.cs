@@ -11,15 +11,12 @@ namespace BSAWeatherApp.App_Start
             //Convert to JSON format
             configuration.Formatters.Add(new BrowserJsonFormatter());
 
+            configuration.MapHttpAttributeRoutes();
+
             configuration.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
-            );
-
-            configuration.Routes.MapHttpRoute(
-                name: "ForecastApi",
-                routeTemplate: "api/{controller}/{cityName}/{daysCount}"
             );
         }
     }

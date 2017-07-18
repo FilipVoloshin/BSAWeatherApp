@@ -12,7 +12,6 @@ using System.Web.Http;
 
 namespace BSAWeatherApp.API
 {
-    [RoutePrefix("api/history")]
     public class HistoryController : ApiController
     {
         IHistoryService historyService;
@@ -24,7 +23,6 @@ namespace BSAWeatherApp.API
         }
 
         // GET api/history
-        [Route("")]
         public IEnumerable<CityHistoryViewModel> Get()
         {
             var history = historyService.GetAllHistoryEntries();
@@ -32,14 +30,16 @@ namespace BSAWeatherApp.API
             return (Mapper.Map<IEnumerable<CityHistoryDTO>, IEnumerable<CityHistoryViewModel>>(history));
         }
 
-        //GET api/history/{id}
-        public IHttpActionResult Get(string id)
+        //GET api/history/uman
+
+        [Route("api/History/{cityName}")]
+        public IHttpActionResult Get(string cityName)
         {
             var historyDto = historyService.GetAllHistoryEntries();
             Mapper.Initialize(cfg => cfg.CreateMap<CityHistoryDTO, CityHistoryViewModel>());
             var history = historyHelper.GetCityRequestCount(
                 Mapper.Map<IEnumerable<CityHistoryDTO>, IEnumerable<CityHistoryViewModel>>(historyDto));
-            var cityHistory = history.Where(city => city.City.ToLower() == id.ToLower())
+            var cityHistory = history.Where(city => city.City.ToLower() == cityName.ToLower())
                 .FirstOrDefault();
             return Ok(cityHistory);
         }

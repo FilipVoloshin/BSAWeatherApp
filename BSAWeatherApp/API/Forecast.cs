@@ -18,7 +18,9 @@ namespace BSAWeatherApp.API
             this.urlGenerator = urlGenerator;
         }
 
-        // GET api/forecast/{cityName}/{daysCount}
+        // GET api/forecast/Uman/7
+
+        [Route("api/forecast/{cityName}/{daysCount}")]
         public IHttpActionResult Get(string cityName, string daysCount)
         {
             if (String.IsNullOrEmpty(cityName))
