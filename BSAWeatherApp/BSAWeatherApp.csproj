@@ -316,6 +316,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Weather\Home.cshtml" />
+    <Content Include="Views\Weather\Current.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

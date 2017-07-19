@@ -14,8 +14,49 @@ namespace BSAWeatherApp.Controllers
 {
     public class WeatherController : Controller
     {
+        IUrlGenerator urlGenerator;
+        IHistoryService historyService;
+        IForecastProvider forecastProvider;
+
+        public WeatherController(IUrlGenerator urlGenerator, IHistoryService historyService,
+           IForecastProvider forecastProvider)
+        {
+            this.urlGenerator = urlGenerator;
+            this.historyService = historyService;
+            this.forecastProvider = forecastProvider;
+        }
+
         // GET: Weather/Home
         public ActionResult Home()
+        {
+            return View();
+        }
+
+        //POST: Weather/GetWeather
+        [HttpPost]
+        public ActionResult GetWeather(string weatherCity)
+        {
+            try
+            {
+                var url = urlGenerator.GenerateWeatherUrl(weatherCity);
+                var model = forecastProvider.GetWeatherNowObject(url);
+                if (model == null || String.IsNullOrEmpty(weatherCity))
+                    throw new ArgumentNullException("Empty field. Fill the weather city input.");
+                historyService.AddHistory(new CityHistoryDTO
+                {
+                    CityName = model.Name,
+                    DateTimeOfSearch = DateTime.Now
+                });
+                return RedirectToAction("Current", model);
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("NotFound", "Error",e.Message);
+            }
+        }
+
+        //GET: Weather/Current
+        public ActionResult Current()
         {
             return View();
         }
