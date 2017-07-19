@@ -1,55 +1,24 @@
-﻿@model IEnumerable<CityViewModel>
-@{
-    ViewBag.Title = "Forecast";
-    var cityBind = new List<SelectListItem>();
-    foreach (var city in Model)
-    {
-        cityBind.Add(new SelectListItem
-        {
-            Value = city.Name,
-            Text = city.Name
-        });
-    }
-    var daysPeriodBind = new List<SelectListItem>
-    {
-        new SelectListItem{ Text = "For three days", Value = "3"},
-        new SelectListItem{ Text = "For a week", Value = "7"}
-    };
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section content{
-    <link href="~/Content/select2/select2.css" rel="stylesheet" />
-    <link href="~/Content/select2/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/site/home_style.css" rel="stylesheet" />
 }
-<div class="row" id="filterContainer">
 
-    @using (Ajax.BeginForm("Forecast", "Weather", new AjaxOptions { UpdateTargetId = "weatherResult", OnBegin = "startAjax()", OnSuccess = "weatherResultAppear()" }, new { @class = "form" }))
-    {
-        <div class="col-md-3">
-
-            <h2>Weather forecast <span class="fa fa-refresh fa-spin" id="loadSpin" aria-hidden="true" style='display:none'></span></h2>
-            <div class="form" id="citiesGroup">
-                @Html.Label("customCity", "Enter city name:")
-                @Html.TextBox("customCity", null, new { @class = "form-control", @required = "required" })
-            </div>
-            <div class="form" id="customCityGroup">
-                @Html.Label("defaultCity", "Select city from list:")
-                @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control", id = "cityDropDown" })
-            </div>
-            <div class="form" id="daysCountCityGroup">
-                @Html.Label("daysCount", "Select period:")
-                @Html.DropDownList("daysCount", daysPeriodBind, new { @class = "form-control" })
-            </div>
-            <button value="GetForecast" type="submit" id="weatherSbmt" class="btn btn-success">
-                Get forecast
-                <span class="fa fa-cloud"></span>
-            </button>
-        </div>
-    }
-    <div class="col-md-8 col-md-push-1" id="weatherResult">
-
+<header>
+    <div class="title">
+        <h1><i class="wi wi-day-fog"></i>&nbsp; Weather Application</h1>
+        <p>The easiest way to find out the weather!</p>
+        <p>&nbsp; Scroll for more!&nbsp;&nbsp;<i class="fa fa-arrows-v"></i></p>
     </div>
-</div>
-@section scripts{
-    <script src="~/Scripts/select2/select2.full.js"></script>
-}
+</header>
 
+<main>
+    <h2>Information about <i>Weather app</i>:</h2>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Culpa facilis, labore debitis nesciunt ipsam odio corporis architecto reiciendis
+        voluptas ab quibusdam ratione rerum tempore
+        voluptatibus libero cumque dignissimos vero hic!
+    </p>
+</main>

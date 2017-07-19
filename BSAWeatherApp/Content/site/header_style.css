@@ -25,7 +25,6 @@ body {
 }
 
 #search {
-    background-color: #fff;
     height: 100%;
     left: 0;
     position: fixed;
@@ -37,9 +36,9 @@ body {
 
     #search .close {
         color: #be5254;
-        font-size: 40px;
+        font-size: 80px;
         opacity: 1;
-        padding: 10px 17px;
+        padding: 10px 50px;
         position: fixed;
         right: 15px;
         top: 15px;
@@ -61,7 +60,7 @@ button.close {
 #search input[type="text"] {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 0 none;
-    color: #333;
+    color: white;
     font-family: "Open Sans",sans-serif;
     font-size: 50px;
     font-weight: 300;
@@ -73,6 +72,9 @@ button.close {
     text-align: center;
     top: 50%;
     width: 100%;
+}
+#search input::placeholder{
+    color: white;
 }
 
 #search .btn {
@@ -121,6 +123,6 @@ nav {
 }
 
 .btn-site {
-    background: #be5254 none repeat scroll 0 0;
+    background: rgba(6, 113, 209, 0.70) none repeat scroll 0 0;
     color: #fff !important;
 }
