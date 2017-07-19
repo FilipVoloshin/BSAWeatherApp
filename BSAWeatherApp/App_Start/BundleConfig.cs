@@ -25,7 +25,11 @@ namespace BSAWeatherApp
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
                      "~/Content/font-awesome.min.css"));
 
-           
+            bundles.Add(new StyleBundle("~/Content/weathericons").Include(
+                     "~/Content/weather-icons/weather-icons.css",
+                     "~/Content/weather-icons/weather-icons-wind.css"));
+
+
         }
     }
 }
