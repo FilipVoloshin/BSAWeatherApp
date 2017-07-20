@@ -1,9 +1,30 @@
 ﻿@model BSAWeatherApp.Models.WeatherNow
 @section content{
     <link href="~/Content/site/home_style.css" rel="stylesheet" />
+    <link href="~/Content/site/weather_current_style.css" rel="stylesheet" />
 }
 
 <header>
     <div class="title">
+        <div class="container">
+            <h1 id="main-title"></h1>
+            <div class="col-md-12 col-md-offset-0" id="current-main">
+                <h1>@Model.Name, &nbsp; @Model.Sys.Country</h1>
+                <div class="col-md-2">
+                    <h2><i class="wi wi-thermometer"></i> - @Model.Main.Temp_max<i class="wi wi-celsius"></i> </h2>
+                    <h2><i class="wi wi-thermometer-exterior"></i> - @Model.Main.Temp_min <i class="wi wi-celsius"></i></h2>
+                </div>
+                <div class="col-md-8" id="weather-main">
+                    <i class="fa fa-5x wi wi-day-sunny"></i>
+                    <h2>@Model.Main.Temp <i class="wi wi-celsius"></i></h2>
+
+                </div>
+                <div class="col-md-2 ">
+                    <h2><i class="wi wi-humidity"> - @Model.Main.Temp_max </i></h2>
+                    <h2><i class="wi wi-strong-wind"></i> - @Model.Wind.Speed km/s</h2>
+                </div>
+            </div>
+        </div>
+
     </div>
 </header>

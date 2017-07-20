@@ -254,6 +254,7 @@
     <Content Include="Content\select2\select2.min.css" />
     <Content Include="Content\site\home_style.css" />
     <Content Include="Content\site\style.css" />
+    <Content Include="Content\site\weather_current_style.css" />
     <Content Include="Content\weather-icons\weather-icons-wind.css" />
     <Content Include="Content\weather-icons\weather-icons.css" />
     <Content Include="favicon.ico" />

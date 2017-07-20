@@ -32,9 +32,8 @@ namespace BSAWeatherApp.Controllers
             return View();
         }
 
-        //POST: Weather/GetWeather
-        [HttpPost]
-        public ActionResult GetWeather(string weatherCity)
+        //POST: Weather/Current
+        public ActionResult Current(string weatherCity)
         {
             try
             {
@@ -47,18 +46,12 @@ namespace BSAWeatherApp.Controllers
                     CityName = model.Name,
                     DateTimeOfSearch = DateTime.Now
                 });
-                return RedirectToAction("Current", model);
+                return View(model);
             }
             catch(Exception e)
             {
                 return RedirectToAction("NotFound", "Error",e.Message);
             }
-        }
-
-        //GET: Weather/Current
-        public ActionResult Current()
-        {
-            return View();
         }
     }
 }
