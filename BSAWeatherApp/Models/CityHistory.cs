@@ -13,5 +13,6 @@ namespace BSAWeatherApp.Models
         [Required]
         public string CityName { get; set; }
         public DateTime DateTimeOfSearch { get; set; }
+        public bool IsSuccess { get; set; }
     }
 }

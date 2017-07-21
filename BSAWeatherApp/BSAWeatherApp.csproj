@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201707121112376_AddTableCityHistory.Designer.cs">
       <DependentUpon>201707121112376_AddTableCityHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707211009046_AddAditionalColumnsToTables.cs" />
+    <Compile Include="Migrations\201707211009046_AddAditionalColumnsToTables.Designer.cs">
+      <DependentUpon>201707211009046_AddAditionalColumnsToTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CityHistory.cs" />
     <Compile Include="Models\CityModel.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707121112376_AddTableCityHistory.resx">
       <DependentUpon>201707121112376_AddTableCityHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707211009046_AddAditionalColumnsToTables.resx">
+      <DependentUpon>201707211009046_AddAditionalColumnsToTables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
