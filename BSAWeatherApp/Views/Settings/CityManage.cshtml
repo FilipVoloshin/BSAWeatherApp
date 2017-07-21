@@ -4,45 +4,119 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section content{
+    <link href="~/Content/site/header_style.css" rel="stylesheet" />
     <link href="~/Content/site/settings_style.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+}
+@{
+    var cities = Model.SearchStatistic.Select(c => c.City).ToList();
+    var searchStat = Model.SearchStatistic.Select(c => c.CountOfRequests).ToList();
 }
 
-<div class="container-fluid">
-    <div class="col-md-2">
-        <div id="cities-management-top">
-            <h>Cities management:</h>
-        </div>
-        <div id="cities-management-table">
-            <table class="table table-condensed table-hover">
-                <tbody>
-                    @foreach (var city in Model.Cities)
-                    {
-                        <tr id="city_@city.Id">
-                            <td>@city.Name</td>
-                            <td>
-                                <button class="btn btn-xs btn-danger"
-                                        title="Delete city"
-                                        onclick="deleteCity(@city.Id)">
-                                    <i class="fa fa-remove"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div id="cities-management-add-city">
-            @using (Ajax.BeginForm("AddCity", "Settings", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "cities-management-table" }))
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 panel panel-default">
+            <div class="panel-heading" id="cities-management-top">
+                <h4 class="panel-title center-block" style="text-align:center">Cities management</h4>
+            </div>
+            <div class="panel-body">
+                <div id="cities-management-table">
+                    <table class="table table-condensed table-hover">
+                        <tbody>
+                            @foreach (var city in Model.Cities)
+                            {
+                                <tr id="city_@city.Id">
+                                    <td>@city.Name</td>
+                                    <td>
+                                        <button class="btn btn-xs btn-danger"
+                                                title="Delete city"
+                                                onclick="deleteCity(@city.Id)">
+                                            <i class="fa fa-remove"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div id="cities-management-add-city">
+                    @using (Ajax.BeginForm("AddCity", "Settings", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "cities-management-table" }))
             {
-                @Html.TextBox("Name", null, new { @class = "form-control", required = "required", id = "cityName" })
-                <button id="addCity" type="submit" class="btn btn-success btn-block">
-                    <i class="fa fa-plus-circle"></i>
-                    &nbsp;Add city
-                </button>
-            }
+                        @Html.TextBox("Name", null, new { @class = "form-control", required = "required", id = "cityName" })
+                        <button id="addCity" type="submit" class="btn btn-success btn-block">
+                            <i class="fa fa-plus-circle"></i>
+                            &nbsp;Add city
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-push-1 panel panel-default tab-content">
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="tab" href="#history">User's history</a></li>
+                    <li><a data-toggle="tab" href="#statistic">Statistic</a></li>
+                </ul>
+            </div>
+            <div id="history" class="panel-body tab-pane fade in active">
+                <table class="table table-hover" id="history-table">
+                    <thead>
+                        <tr>
+                            <th>City name</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var historyItem in Model.CityHistory)
+                        {
+                            if (historyItem.IsSuccess)
+                            {
+                                <tr class="danger">
+                                    <td>@historyItem.CityName</td>
+                                    <td align="center">@historyItem.DateTimeOfSearch</td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>@historyItem.CityName</td>
+                                    <td align="center">@historyItem.DateTimeOfSearch</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="statistic">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
     </div>
 </div>
 @section scripts{
     <script src="~/Scripts/cities_history.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+            // The type of chart we want to create
+            type: 'line',
+
+            // The data for our dataset
+            data: {
+                labels: @Html.Raw(Json.Encode(cities)),
+                datasets: [{
+                    label: "Search statistic",
+                    backgroundColor: 'rgba(6, 113, 209, 0.70)',
+                    borderColor: 'white',
+                    data: @Html.Raw(Json.Encode(searchStat)),
+                }]
+            },
+            options: {}
+        });
+    </script>
 }

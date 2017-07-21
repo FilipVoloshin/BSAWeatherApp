@@ -249,15 +249,12 @@
     <Content Include="Content\datatable\images\sort_both.png" />
     <Content Include="Content\datatable\images\sort_desc.png" />
     <Content Include="Content\datatable\images\sort_desc_disabled.png" />
-    <Content Include="Content\datatable\jquery.dataTables.css" />
+    <Content Include="Content\dxSlider\jquery.bxslider.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\img\weather_back.jpg" />
     <Content Include="Content\site\header_style.css" />
     <Content Include="Content\img\bsa_weather_log.ico" />
-    <Content Include="Content\select2\select2-bootstrap.css" />
-    <Content Include="Content\select2\select2.css" />
-    <Content Include="Content\select2\select2.min.css" />
     <Content Include="Content\site\home_style.css" />
     <Content Include="Content\site\settings_style.css" />
     <Content Include="Content\site\style.css" />
@@ -293,11 +290,10 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\cities.js" />
     <Content Include="Scripts\cities_history.js" />
     <Content Include="Scripts\datatable\dataTables.bootstrap.js" />
     <Content Include="Scripts\datatable\jquery.dataTables.js" />
-    <Content Include="Scripts\history.js" />
+    <Content Include="Scripts\dxSlider\jquery.bxslider.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -305,11 +301,6 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\searchCity.js" />
-    <Content Include="Scripts\select2\select2.full.js" />
-    <Content Include="Scripts\select2\select2.full.min.js" />
-    <Content Include="Scripts\select2\select2.js" />
-    <Content Include="Scripts\select2\select2.min.js" />
-    <Content Include="Scripts\weatherForecast.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

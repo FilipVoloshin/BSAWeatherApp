@@ -61,6 +61,7 @@ button.close {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 0 none;
     color: white;
+    text-shadow: 2px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     font-family: "Open Sans",sans-serif;
     font-size: 50px;
     font-weight: 300;
@@ -73,8 +74,9 @@ button.close {
     top: 50%;
     width: 100%;
 }
-#search input::placeholder{
+#search input::placeholder {
     color: white;
+    text-shadow: 2px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
 #search .btn {
