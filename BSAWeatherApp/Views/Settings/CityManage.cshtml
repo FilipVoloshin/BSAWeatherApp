@@ -1,0 +1,48 @@
+﻿@model BSAWeatherApp.Models.ViewModels.SettingsViewModel
+@{
+    ViewBag.Title = "CityManage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section content{
+    <link href="~/Content/site/settings_style.css" rel="stylesheet" />
+}
+
+<div class="container-fluid">
+    <div class="col-md-2">
+        <div id="cities-management-top">
+            <h>Cities management:</h>
+        </div>
+        <div id="cities-management-table">
+            <table class="table table-condensed table-hover">
+                <tbody>
+                    @foreach (var city in Model.Cities)
+                    {
+                        <tr id="city_@city.Id">
+                            <td>@city.Name</td>
+                            <td>
+                                <button class="btn btn-xs btn-danger"
+                                        title="Delete city"
+                                        onclick="deleteCity(@city.Id)">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div id="cities-management-add-city">
+            @using (Ajax.BeginForm("AddCity", "Settings", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "cities-management-table" }))
+            {
+                @Html.TextBox("Name", null, new { @class = "form-control", required = "required", id = "cityName" })
+                <button id="addCity" type="submit" class="btn btn-success btn-block">
+                    <i class="fa fa-plus-circle"></i>
+                    &nbsp;Add city
+                </button>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/cities_history.js"></script>
+}

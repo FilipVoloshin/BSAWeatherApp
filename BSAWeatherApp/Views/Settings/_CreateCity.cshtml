@@ -1,0 +1,19 @@
+﻿@model IEnumerable<CityViewModel>
+<table class="table table-condensed table-hover">
+    <tbody>
+        @foreach (var city in Model)
+        {
+            <tr id="city_@city.Id">
+                <td>@city.Name</td>
+                <td>
+                    <button class="btn btn-xs btn-danger"
+                            title="Delete city"
+                            onclick="deleteCity(@city.Id)">
+                        <i class="fa fa-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

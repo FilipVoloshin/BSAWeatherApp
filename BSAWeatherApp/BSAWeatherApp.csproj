@@ -181,6 +181,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\BSAWeatherContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
     <Compile Include="DataService\IEntity.cs" />
     <Compile Include="DataService\IRepository.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\ViewModels\CityHistoryViewModel.cs" />
     <Compile Include="Models\ViewModels\CityStatisticViewModel.cs" />
     <Compile Include="Models\ViewModels\CityViewModel.cs" />
+    <Compile Include="Models\ViewModels\SettingsViewModel.cs" />
     <Compile Include="Services\CityService.cs" />
     <Compile Include="Services\HistoryService.cs" />
     <Compile Include="Services\ICityService.cs" />
@@ -257,6 +259,7 @@
     <Content Include="Content\select2\select2.css" />
     <Content Include="Content\select2\select2.min.css" />
     <Content Include="Content\site\home_style.css" />
+    <Content Include="Content\site\settings_style.css" />
     <Content Include="Content\site\style.css" />
     <Content Include="Content\site\weather_current_style.css" />
     <Content Include="Content\weather-icons\weather-icons-wind.css" />
@@ -291,6 +294,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\cities.js" />
+    <Content Include="Scripts\cities_history.js" />
     <Content Include="Scripts\datatable\dataTables.bootstrap.js" />
     <Content Include="Scripts\datatable\jquery.dataTables.js" />
     <Content Include="Scripts\history.js" />
@@ -322,6 +326,8 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Weather\Home.cshtml" />
     <Content Include="Views\Weather\Current.cshtml" />
+    <Content Include="Views\Settings\CityManage.cshtml" />
+    <Content Include="Views\Settings\_CreateCity.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
