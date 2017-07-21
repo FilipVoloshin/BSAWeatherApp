@@ -71,7 +71,7 @@
                     <tbody>
                         @foreach (var historyItem in Model.CityHistory)
                         {
-                            if (historyItem.IsSuccess)
+                            if (!historyItem.IsSuccess)
                             {
                                 <tr class="danger">
                                     <td>@historyItem.CityName</td>

@@ -44,12 +44,19 @@ namespace BSAWeatherApp.Controllers
                 historyService.AddHistory(new CityHistoryDTO
                 {
                     CityName = model.Name,
-                    DateTimeOfSearch = DateTime.Now
+                    DateTimeOfSearch = DateTime.Now,
+                    IsSuccess = true
                 });
                 return View(model);
             }
             catch(Exception e)
             {
+                historyService.AddHistory(new CityHistoryDTO
+                {
+                    CityName = weatherCity,
+                    DateTimeOfSearch = DateTime.Now,
+                    IsSuccess = false
+                });
                 return RedirectToAction("NotFound", "Error",e.Message);
             }
         }
