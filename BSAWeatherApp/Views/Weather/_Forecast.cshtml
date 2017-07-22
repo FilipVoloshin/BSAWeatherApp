@@ -1,0 +1,42 @@
+﻿@model BSAWeatherApp.Models.Forecast
+<div class="col-md-8 col-md-push-1 panel panel-primary" id="tableDiv">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Model.City.Name, @Model.City.Country</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover" id="forecastTable">
+            <thead>
+                <tr>
+                    <td><b>Day</b></td>
+                    <td><b>Morning °C</b></td>
+                    <td><b>Day °C</b></td>
+                    <td><b>Evening °C</b></td>
+                    <td><b>Night °C</b></td>
+                    <td><b>Minimum °C</b></td>
+                    <td><b>Maximum °C</b></td>
+                    <td><b>Weather</b></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var weather in Model.List)
+            {
+                var date = weather.Dt.UnixTimeStampToDateTime();
+                var weatherDescription = weather.Weather.FirstOrDefault();
+                var icon = $"http://openweathermap.org/img/w/{weatherDescription.Icon}.png";
+                    <tr>
+                        <td>@date.DayOfWeek (@date.ToShortDateString())</td>
+                        <td>@weather.Temp.Morn</td>
+                        <td>@weather.Temp.Day</td>
+                        <td>@weather.Temp.Eve</td>
+                        <td>@weather.Temp.Night</td>
+                        <td>@weather.Temp.Min</td>
+                        <td>@weather.Temp.Max</td>
+                        <td>@weatherDescription.Main / @weatherDescription.Description</td>
+                        <td><img src="@icon" /></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

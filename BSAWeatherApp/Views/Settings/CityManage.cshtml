@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-md-push-1 panel panel-default tab-content">
+        <div class="col-md-8 col-md-push-1 panel panel-default tab-content" id="mainHistory">
             <div class="panel-heading">
                 <ul class="nav nav-pills">
                     <li class="active"><a data-toggle="tab" href="#history">User's history</a></li>
@@ -65,7 +65,7 @@
                     <thead>
                         <tr>
                             <th>City name</th>
-                            <th></th>
+                            <th>Date of search</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,18 +75,29 @@
                             {
                                 <tr class="danger">
                                     <td>@historyItem.CityName</td>
-                                    <td align="center">@historyItem.DateTimeOfSearch</td>
+                                    <td>@historyItem.DateTimeOfSearch</td>
                                 </tr>
                             }
                             else
                             {
                                 <tr>
                                     <td>@historyItem.CityName</td>
-                                    <td align="center">@historyItem.DateTimeOfSearch</td>
+                                    <td>@historyItem.DateTimeOfSearch</td>
                                 </tr>
                             }
                         }
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                <button class="btn btn-danger" onclick="clearHistory()">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    &nbsp; Clear user's history
+                                </button>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <div class="tab-pane fade" id="statistic">
@@ -96,17 +107,14 @@
     </div>
 </div>
 @section scripts{
-    <script src="~/Scripts/cities_history.js"></script>
+    <script src="~/Scripts/weatherCitiesHistory.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var chart = new Chart(ctx, {
-            // The type of chart we want to create
             type: 'line',
-
-            // The data for our dataset
             data: {
                 labels: @Html.Raw(Json.Encode(cities)),
                 datasets: [{

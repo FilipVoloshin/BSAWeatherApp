@@ -14,7 +14,6 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-3">
                             <span class="sr-only">Toggle navigation</span>
@@ -25,19 +24,18 @@
                         <a class="navbar-brand" href="@Url.Action("Home","Weather")"><i class="wi wi-day-fog"></i>&nbsp; Weather app</a>
                     </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-collapse-3">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="@Url.Action("Home","Weather")">Home</a></li>
-                            <li><a href="#">Weather forecast</a></li>
+                            <li><a href="@Url.Action("Forecast","Weather")">Weather forecast</a></li>
                             <li><a href="@Url.Action("CityManage","Settings")">Settings</a></li>
                             <li class="s-icon">
                                 <a href="#" id="addClass"><span class="glyphicon glyphicon-search"></span></a>
                             </li>
                         </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container -->
-            </nav><!-- /.navbar -->
+                    </div>
+                </div>
+            </nav>
         </div>
     </div>
     <div id="qnimate" class="off">
@@ -45,7 +43,7 @@
             <button data-widget="remove" id="removeClass" class="close" type="button">×</button>
             @using (Html.BeginForm("Current", "Weather", FormMethod.Post))
             {
-                @Html.TextBox("weatherCity", null, new { autocomplete = "off", @required = "required", placeholder = "Enter cities name here",id = "weather-city" })
+                @Html.TextBox("weatherCity", null, new { autocomplete = "off", @required = "required", placeholder = "Enter cities name here", id = "weather-city" })
                 <button class="btn btn-lg btn-site" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button>
             }
         </div>
@@ -53,7 +51,19 @@
     <div class="body-content">
         @RenderBody()
     </div>
-    @*TODO: Add footer to the project*@
+    <div class="navbar navbar-default navbar-fixed-bottom" id="navbarBotton">
+        <div class="container">
+            <p class="navbar-text pull-left">
+                All rights reserved. Company information
+            </p>
+            <div class="navbar-text pull-right">
+                <a href='#'><i class="fa fa-facebook fa-3x fa-fw"></i></a>
+                <a href='#'><i class="fa fa-instagram fa-3x fa-fw"></i></a>
+                <a href='#'><i class="fa fa-twitter fa-3x fa-fw"></i></a>
+                <a href='#'><i class="fa fa-linkedin fa-3x fa-fw"></i></a>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/own")

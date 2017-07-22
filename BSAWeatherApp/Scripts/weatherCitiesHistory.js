@@ -8,6 +8,15 @@
         }
     })
 }
+function clearHistory() {
+    $.ajax({
+        url: "/Settings/ClearHistory",
+        type: "POST",
+        success: function () {
+            $("#history-table > tbody").empty();
+        }
+    })
+}
 $(document).ready(function () {
     $("#history-table").DataTable({
         "info": false,

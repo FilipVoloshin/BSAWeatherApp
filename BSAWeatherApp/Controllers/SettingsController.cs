@@ -76,5 +76,12 @@ namespace BSAWeatherApp.Controllers
         {
             cityService.DeleteCity(id);
         }
+
+        //POST: Settings/ClearHistory
+        [HttpPost]
+        public void ClearHistory()
+        {
+            historyService.ClearHistory();
+        }
     }
 }

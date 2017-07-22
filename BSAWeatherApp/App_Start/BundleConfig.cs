@@ -15,12 +15,12 @@ namespace BSAWeatherApp
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
             bundles.Add(new ScriptBundle("~/bundles/own").Include(
-          "~/Scripts/weatherForecast.js",
-          "~/Scripts/searchCity.js"));
+          "~/Scripts/weatherSearch.js"));
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site/style.css",
-                      "~/Content/site/header_style.css"));
+                      "~/Content/site/header_style.css",
+                      "~/Content/site/footer_style.css")); 
 
             bundles.Add(new StyleBundle("~/Content/fontawesome").Include(
                      "~/Content/font-awesome.min.css"));

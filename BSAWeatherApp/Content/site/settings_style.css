@@ -92,3 +92,7 @@ nav {
     background: rgba(6, 113, 209, 0.70) none repeat scroll 0 0;
     color: #fff !important;
 }
+
+#mainHistory {
+    margin-bottom: 200px;
+}

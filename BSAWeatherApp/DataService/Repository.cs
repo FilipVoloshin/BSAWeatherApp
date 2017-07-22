@@ -45,5 +45,6 @@ namespace BSAWeatherApp.DataService
             var item = DbSet.Find(id);
             DbSet.Remove(item);
         }
+
     }
 }

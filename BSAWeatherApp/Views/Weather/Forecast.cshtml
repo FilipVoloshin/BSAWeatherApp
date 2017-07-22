@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CityViewModel>
+@section content{
+    <link href="~/Content/site/weather_forecast.css" rel="stylesheet" />
+}
+@{
+    var cityBind = new List<SelectListItem>();
+    foreach (var city in Model)
+    {
+        cityBind.Add(new SelectListItem
+        {
+            Value = city.Name,
+            Text = city.Name
+        });
+    }
+    var daysPeriodBind = new List<SelectListItem>
+    {
+        new SelectListItem{ Text = "For three days", Value = "3"},
+        new SelectListItem{ Text = "For a week", Value = "7"}
+    };
+}
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+</head>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Searh city:</h3>
+            </div>
+            <div class="panel-body">
+                @using (Ajax.BeginForm("Forecast", "Weather", new AjaxOptions { UpdateTargetId = "tableDiv" }))
+                {
+                    <div id="customCityDiv">
+                        @Html.Label("customCityLabel", "Enter city name:")
+                        @Html.TextBox("customCity", null, new { @class = "form-control", required = "required" })
+                    </div>
+                    <div id="cityDropDownDiv">
+                        @Html.Label("cityDropDownLabe", "Select city from list:")
+                        @Html.DropDownList("defaultCity", cityBind, "--", new { @class = "form-control", id = "cityDropDown", onclick = "changeSelectType" })
+                    </div>
+                    <div id="daysCountDiv">
+                        @Html.Label("daysCountLabel", "Select period:")
+                        @Html.DropDownList("daysCount", daysPeriodBind, new { @class = "form-control", id = "daysCount" })
+                    </div>
+                        <button value="GetForecast" type="submit" id="weatherSbmt" class="btn btn-primary btn-block">
+                            Get forecast &nbsp; &nbsp;
+                            <span class="fa fa-cloud"></span>
+                        </button>
+                }
+            </div>
+
+        </div>
+        <div id="tableDiv">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/weatherForecast.js"></script>
+}
