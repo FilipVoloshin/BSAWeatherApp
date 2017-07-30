@@ -103,6 +103,8 @@
     <Compile Include="Models\CurrentWeather.cs" />
     <Compile Include="Models\Forecast.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\IClientService.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CityViewModel.cs" />
@@ -114,6 +116,9 @@
     </Compile>
     <Compile Include="View\CurrentWeatherView.xaml.cs">
       <DependentUpon>CurrentWeatherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IndexView.xaml.cs">
+      <DependentUpon>IndexView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +151,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CurrentWeatherView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\IndexView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

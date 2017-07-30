@@ -14,9 +14,17 @@ namespace BSAWeather.UWP
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             var navigationService = new NavigationService();
-            navigationService.Configure(nameof(CityViewModel), typeof(CityView));
-            navigationService.Configure(nameof(CurrentWeatherViewModel), typeof(CurrentWeatherView));
+            navigationService.Configure(nameof(IndexViewModel), typeof(IndexView));
+
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
+            SimpleIoc.Default.Register<IndexViewModel>();
+
+            ServiceLocator.Current.GetInstance<IndexViewModel>();
+        }
+
+        public IndexViewModel IndexVMInstance
+        {
+            get { return ServiceLocator.Current.GetInstance<IndexViewModel>(); }
         }
 
     }
