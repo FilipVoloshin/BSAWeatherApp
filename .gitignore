@@ -1,2 +1,5 @@
 BSAWeatherApp/bin/
 BSAWeatherApp/obj/
+BSAWeather.UWP/bin/
+BSAWeather.UWP/obj
+DataServices

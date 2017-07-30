@@ -1,1 +1,0 @@
-C:\binary_git_root\BSAWeatherApp\BSAWeather.UWP\BSAWeather.UWP.csproj;x86
