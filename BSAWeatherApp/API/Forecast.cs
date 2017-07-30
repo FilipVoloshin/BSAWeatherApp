@@ -38,5 +38,23 @@ namespace BSAWeatherApp.API
                 return NotFound();
             }
         }
+
+        [Route("api/forecast/{cityName}")]
+        public IHttpActionResult Get(string cityName)
+        {
+            if (String.IsNullOrEmpty(cityName))
+                return BadRequest();
+            try
+            {
+                var url = urlGenerator.GenerateWeatherUrl(cityName);
+                var model = forecastProvider.GetWeatherNowObject(url);
+                return Ok(model);
+            }
+            catch (AggregateException e)
+            {
+                return NotFound();
+            }
+        }
+
     }
 }
