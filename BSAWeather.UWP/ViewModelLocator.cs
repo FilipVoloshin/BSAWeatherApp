@@ -1,5 +1,4 @@
-﻿using BSAWeather.UWP.Models;
-using BSAWeather.UWP.View;
+﻿using BSAWeather.UWP.View;
 using BSAWeather.UWP.ViewModels;
 using GalaSoft.MvvmLight.Ioc;
 using GalaSoft.MvvmLight.Views;
@@ -22,10 +21,16 @@ namespace BSAWeather.UWP
             ServiceLocator.Current.GetInstance<IndexViewModel>();
         }
 
-        public IndexViewModel IndexVMInstance
+        public IndexViewModel HomeVMInstance
         {
-            get { return ServiceLocator.Current.GetInstance<IndexViewModel>(); }
+            get
+            {
+                return ServiceLocator.Current.GetInstance<IndexViewModel>();
+            }
         }
 
+        public static void Cleanup()
+        {
+        }
     }
 }

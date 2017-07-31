@@ -6,10 +6,7 @@
     RequestedTheme="Light">
     <Application.Resources>
         <ResourceDictionary>
-            <local:ViewModelLocator x:Key="Locator" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ThemeResources.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+            <local:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
