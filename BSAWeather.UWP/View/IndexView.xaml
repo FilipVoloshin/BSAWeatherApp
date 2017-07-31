@@ -6,4 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    DataContext="{Binding OVMInstance,Source={StaticResource Locator}}"/>
+    DataContext="{Binding OVMInstance,Source={StaticResource Locator}}" Height="921.333" Width="1506.667">
+    <Grid HorizontalAlignment="Left" Height="921.333312988281" VerticalAlignment="Top" Width="1507" Margin="0,0,-0.333,0"/>
+</Page>
