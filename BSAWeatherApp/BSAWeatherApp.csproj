@@ -206,11 +206,15 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Context\BSARegistrationContext.cs" />
     <Compile Include="Context\BSAWeatherContext.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\WeatherController.cs" />
+    <Compile Include="DataService\ClientManager.cs" />
+    <Compile Include="DataService\IdentityUnitOfWork.cs" />
     <Compile Include="DataService\IEntity.cs" />
+    <Compile Include="DataService\IIdentityUnitOfWork.cs" />
     <Compile Include="DataService\IRepository.cs" />
     <Compile Include="DataService\IUnitOfWork.cs" />
     <Compile Include="DataService\Repository.cs" />
@@ -222,6 +226,9 @@
     <Compile Include="Helpers\DateTimeHelper.cs" />
     <Compile Include="Helpers\HistoryHelper.cs" />
     <Compile Include="Helpers\IHistoryHelper.cs" />
+    <Compile Include="Identity\ApplicationRoleManager.cs" />
+    <Compile Include="Identity\ApplicationUserManager.cs" />
+    <Compile Include="Identity\IClientManager.cs" />
     <Compile Include="Migrations\201707101712391_InitialCreate.cs" />
     <Compile Include="Migrations\201707101712391_InitialCreate.Designer.cs">
       <DependentUpon>201707101712391_InitialCreate.cs</DependentUpon>
@@ -243,10 +250,13 @@
       <DependentUpon>201707211009046_AddAditionalColumnsToTables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\IdentityEntities\ApplicationRole.cs" />
+    <Compile Include="Models\IdentityEntities\ApplicationUser.cs" />
     <Compile Include="Models\CityHistory.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\DTO\CityDTO.cs" />
     <Compile Include="Models\DTO\CityHistoryDTO.cs" />
+    <Compile Include="Models\IdentityEntities\ClientProfile.cs" />
     <Compile Include="Models\ViewModels\CityHistoryViewModel.cs" />
     <Compile Include="Models\ViewModels\CityStatisticViewModel.cs" />
     <Compile Include="Models\ViewModels\CityViewModel.cs" />

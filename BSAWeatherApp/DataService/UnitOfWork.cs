@@ -1,6 +1,4 @@
 ﻿using BSAWeatherApp.Context;
-using System;
-using BSAWeatherApp.Models;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 
